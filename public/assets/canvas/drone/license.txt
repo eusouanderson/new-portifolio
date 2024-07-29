@@ -1,0 +1,11 @@
+Model Information:
+* title:	Drone
+* source:	https://sketchfab.com/3d-models/drone-11b2ba003578402d8c9c57f31199d44f
+* author:	ilarioseb (https://sketchfab.com/ilarioseb)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Drone" (https://sketchfab.com/3d-models/drone-11b2ba003578402d8c9c57f31199d44f) by ilarioseb (https://sketchfab.com/ilarioseb) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
