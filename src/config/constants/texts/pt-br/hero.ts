@@ -1,7 +1,7 @@
 import { HeroTexts } from "@/types/texts";
 
 export const hero: HeroTexts = {
-  greetings: "Olá, meu nome é",
+  greetings: "",
   cvButton: "Baixar CV",
   title: [
     {
@@ -13,5 +13,5 @@ export const hero: HeroTexts = {
     },
   ],
   subtitle:
-    "Especializado em Next.js, Node.js e .NET para criar aplicações web modernas e eficientes",
+    "Especialista em Python, com forte experiência na criação de APIs web com FastAPI, e proficiência em Next.js, Node.js, Vue.js e .NET para desenvolver aplicações web modernas e de alta performance.",
 };

@@ -21,11 +21,10 @@ export const MainPage = ({ texts = textBases["pt-br"] }: Props) => {
     >
       <Navbar text={texts.navbar} />
       <ParticlesBG />
-      <Hero texts={texts.hero} />
       <AboutMe texts={texts.aboutMe} />
+      <Hero texts={texts.hero} />
       <Experiences texts={texts.workExperience} />
       <Tecnologies techTexts={texts.technologies} />
-      <Projects projectText={texts.projects} />
       <Contact texts={texts.contact} />
       <LanguageSwitch />
     </main>

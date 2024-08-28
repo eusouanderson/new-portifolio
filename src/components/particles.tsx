@@ -1,20 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+
 export const ParticlesBG = () => {
 
-  // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     });
   }, []);
 
@@ -24,13 +18,13 @@ export const ParticlesBG = () => {
 
   return (
     <Particles
-      id="tsparticles absolute"
+      id="tsparticles-bg"
       className="-z-10"
       particlesLoaded={particlesLoaded}
       options={{
         background: {
           color: {
-            value: "#141416",
+            value: "#0a0b0d", // Darker background for a modern look
           },
         },
         fpsLimit: 120,
@@ -50,23 +44,23 @@ export const ParticlesBG = () => {
           },
           modes: {
             push: {
-              quantity: 4,
+              quantity: 5,
             },
             repulse: {
-              distance: 200,
+              distance: 150,
               duration: 0.4,
             },
           },
         },
         particles: {
           color: {
-            value: "#ffffff",
+            value: "#c0c0c0", // Light grey particles for a subtle effect
           },
           links: {
             color: "#ffffff",
             distance: 150,
             enable: true,
-            opacity: 0.1,
+            opacity: 0.2,
             width: 1,
           },
           move: {
@@ -76,24 +70,24 @@ export const ParticlesBG = () => {
               default: "bounce",
             },
             random: false,
-            speed: 2,
+            speed: 2, // Slightly slower for a smoother effect
             straight: false,
           },
           number: {
             density: {
               enable: true,
-              // area: 800,
+              area: 800,
             },
-            value: 80,
+            value: 100, // Increased particle count for more density
           },
           opacity: {
-            value: 0.1,
+            value: 0.2, // Increased opacity for better visibility
           },
           shape: {
-            type: "circle",
+            type: "slim",
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 6 }, // Slightly larger particles
           },
         },
         detectRetina: true,

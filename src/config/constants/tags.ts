@@ -27,7 +27,7 @@ export const tags = {
   },
   Django: {
     name: "Django",
-    color: "#092e20",
+    color: "#092147",
   },
   Python: {
     name: "Python",

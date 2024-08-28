@@ -14,7 +14,7 @@ const config: Config = {
         "light-blue": "#24afc1",
         "primary": "#1795a8",
         "secondary": "#24afc1",
-        "accent": "#fccf47",
+        "accent": "#ffd700",
       },
       backgroundImage: {
         "background-home": "url('/assets/images/bg.png')",

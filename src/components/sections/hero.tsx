@@ -156,9 +156,6 @@ export const Hero = ({ texts }: Props) => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 h-1/3 self-center">
-        <ComputersCanvas />
-      </div>
     </section>
   );
 };

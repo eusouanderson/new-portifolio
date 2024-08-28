@@ -57,6 +57,11 @@ section {
   @apply cursor-not-allowed opacity-50;
 }
 
+.text-shadow-md {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

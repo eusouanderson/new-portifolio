@@ -1,5 +1,4 @@
 import { ContactTexts } from "@/types/texts";
-import { EarthCanvas } from "../canvas/earth";
 import { ContactForm } from "../contact-form/contact-form";
 
 interface Props {
@@ -25,7 +24,7 @@ export const Contact = ({ texts }: Props) => {
         </div>
       </div>
       <div className="max-md:hidden max-lg:w-80 max-lg:h-80">
-        <EarthCanvas />
+       
       </div>
     </section>
   );
