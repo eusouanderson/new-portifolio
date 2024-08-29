@@ -4,53 +4,53 @@ import { RiNextjsFill } from "react-icons/ri";
 import { tags } from "../../tags";
 
 export const workExperience: WorkExperienceTexts = {
-  title: "Work Experience",
+  title: "Experiência Profissional",
   experiences: [
     {
-      name: "Software Engineer",
-      companyName: "Houg · Freelance",
+      name: "Engenheiro de Software",
+      companyName: "Houg · Autônomo",
       description:
-        "Currently, I work as a Software Engineer at Houg, developing comprehensive web systems. My responsibilities include creating and maintaining dynamic websites, robust APIs, and efficient databases using MongoDB. I focus on quality and performance, seeking innovative solutions that ensure scalability and security of our services.",
+        "Atualmente, trabalho como Engenheiro de Software na Houg, desenvolvendo sistemas web abrangentes. Minhas responsabilidades incluem a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados eficientes utilizando MongoDB. Foco na qualidade e performance, buscando soluções inovadoras que garantam a escalabilidade e segurança dos nossos serviços.",
       from: "2024-04-01",
-      to: "Present",
-      tags: [tags["MongoDB"], tags["API"], tags["Web Development"]],
+      to: "Presente",
+      tags: [tags["MongoDB"], tags["API"], tags["Desenvolvimento Web"]],
       icon: "Database",
     },
     {
-      name: "Software Engineer",
-      companyName: "Agência Close",
+      name: "Engenheiro de Software",
+      companyName: "Agência Close · Tempo Integral",
       description:
-        "At Agência Close, I am responsible for backend development and APIs for our software, using Electron and Vue.js. I work on designing and implementing scalable and efficient solutions, ensuring seamless integration between frontend and backend, and contributing to a superior user experience.",
+        "Na Agência Close, sou responsável pelo desenvolvimento do backend e das APIs dos nossos softwares, utilizando Electron e Vue.js. Trabalho na arquitetura e implementação de soluções escaláveis e eficientes, garantindo uma integração perfeita entre frontend e backend e contribuindo para uma experiência de usuário superior.",
       from: "2023-09-01",
-      to: "Present",
-      tags: [tags["Electron"], tags["Vue.js"], tags["Backend Development"]],
+      to: "Presente",
+      tags: [tags["Electron"], tags["Vue.js"], tags["Desenvolvimento Backend"]],
       icon: "Code",
     },
     {
-      name: "Fullstack Developer",
+      name: "Desenvolvedor Fullstack",
       companyName: "Allscripts · Freelance",
       description:
-        "As a Fullstack Developer at Allscripts, I was responsible for maintaining projects, fixing bugs, analyzing data, and user feedback. I worked on creating improvements and updates, developing backends with Django, Flask, FastAPI, and Vue.js, and small software with Electron.js.",
+        "Como Desenvolvedor Fullstack na Allscripts, fui responsável pela manutenção de projetos, correção de bugs, análise de dados e feedbacks de usuários. Trabalhei na criação de melhorias e atualizações, desenvolvimento de backends com Django, Flask, FastAPI, e Vue.js, além de pequenos softwares com Electron.js.",
       from: "2010-02-01",
       to: "2023-11-01",
       tags: [tags["Django"], tags["Flask"], tags["FastAPI"], tags["Vue.js"], tags["Electron"]],
       icon: "Tools",
     },
     {
-      name: "Frontend Developer",
+      name: "Desenvolvedor Frontend",
       companyName: "Mestres da Web",
       description:
-        "As a Frontend Developer at Mestres da Web, I use React, Next.js, and TypeScript to develop high-quality web applications. My responsibilities include creating fast, interactive, and accessible user interfaces. I collaborate with the backend team to integrate the frontend with backend services and ensure seamless functionality. Additionally, I handle the deployment of applications. Working in an agile environment, I actively contribute to the team's efforts in delivering top-notch software.",
+        "Como Desenvolvedor Frontend na Mestres da Web, utilizo React, Next.js e TypeScript para desenvolver aplicações web de alta qualidade. Minhas responsabilidades incluem criar interfaces de usuário rápidas, interativas e acessíveis. Colaboro com a equipe de backend para integrar o frontend com os serviços do backend e garantir funcionalidade perfeita. Além disso, cuido do deployment das aplicações. Trabalhando em um ambiente ágil, contribuo ativamente para os esforços da equipe em entregar software de ponta.",
       from: "2023-01-01",
       to: "2024-06-01",
       tags: [tags["React.js"], tags["Next.js"], tags["TypeScript"]],
       icon: "Next.js",
     },
     {
-      name: "Frontend Developer Intern",
+      name: "Estagiário em Desenvolvimento Frontend",
       companyName: "Mestres da Web",
       description:
-        "As a Frontend Developer Intern at Mestres da Web, I worked on developing web applications using React. I collaborated with the team to create user-friendly interfaces and ensure the applications' responsiveness and performance. I also gained experience in working with TypeScript and integrating the frontend with backend services. During my internship, I learned best practices in frontend development and contributed to the team's projects.",
+        "Como Estagiário em Desenvolvimento Frontend na Mestres da Web, trabalhei no desenvolvimento de aplicações web utilizando React. Colaborei com a equipe para criar interfaces de usuário amigáveis e garantir a responsividade e performance das aplicações. Também ganhei experiência com TypeScript e na integração do frontend com serviços backend. Durante o estágio, aprendi as melhores práticas em desenvolvimento frontend e contribui para os projetos da equipe.",
       from: "2022-07-05",
       to: "2022-12-01",
       tags: [tags["React.js"], tags["TypeScript"]],

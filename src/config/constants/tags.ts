@@ -47,6 +47,22 @@ export const tags = {
   },
   API: {
     name: "API",
-    color: "#e34f26", // Escolha uma cor apropriada
+    color: "#e34f26",
+  },
+  "Electron": {
+    name: "Electron",
+    color: "#47848f",
+  },
+  "Vue.js": {
+    name: "Vue.js",
+    color: "#42b883",
+  },
+  "FastAPI": {
+    name: "FastAPI",
+    color: "#009688",
+  },
+  "Flask": {
+    name: "Flask",
+    color: "#000000",
   },
 };
