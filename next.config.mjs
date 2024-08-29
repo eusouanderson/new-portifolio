@@ -4,9 +4,10 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: "placehold.co",
-      }
-    ]
-  }
+      },
+    ],
+  },
+  output: 'export', 
 };
 
 export default nextConfig;
