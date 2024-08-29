@@ -45,5 +45,8 @@ export const tags = {
     name: "MongoDB",
     color: "#13aa52",
   },
-  
+  API: {
+    name: "API",
+    color: "#e34f26", // Escolha uma cor apropriada
+  },
 };
