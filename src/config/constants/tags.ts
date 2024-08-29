@@ -1,6 +1,10 @@
 import { Tag } from "@/types/tag";
 
-export const tags = {
+export type Tags = {
+  [key: string]: Tag;
+};
+
+export const tags: Tags = {
   "Next.js": {
     name: "Next.js",
     color: "#39b89a",

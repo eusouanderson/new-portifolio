@@ -14,7 +14,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2024-04-01",
       to: "Presente",
       tags: [tags["MongoDB"], tags["API"], tags["Web Development"]],
-      icon: "Database",
+      
     },
     {
       name: "Engenheiro de Software",
@@ -24,7 +24,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2023-09-01",
       to: "Presente",
       tags: [tags["Electron"], tags["Vue.js"], tags["Backend Development"]],
-      icon: "Code",
+      
     },
     {
       name: "Desenvolvedor Fullstack",
@@ -34,7 +34,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2010-02-01",
       to: "2023-11-01",
       tags: [tags["Django"], tags["Flask"], tags["FastAPI"], tags["Vue.js"], tags["Electron"]],
-      icon: "Tools",
+      
     },
     {
       name: "Desenvolvedor Frontend",

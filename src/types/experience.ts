@@ -3,6 +3,7 @@ import { Tag } from "./tag";
 
 export type IconProject = "Next.js" | "React.js";
 
+
 export interface Experience {
   name: string;
   description: string;
@@ -10,5 +11,5 @@ export interface Experience {
   tags: Tag[];
   from: string;
   to?: string;
-  icon: IconProject;
+  icon?: IconProject;
 }

@@ -1,5 +1,5 @@
 "use client";
-import { Experience } from "@/types/experience";
+import { Experience, IconProject } from "@/types/experience";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -12,6 +12,12 @@ import { countYears, formatDate } from "@/lib/date";
 interface Props {
   experiences: Experience[];
 }
+
+const iconMap: { [key in IconProject]?: JSX.Element } = {
+  "Next.js": <RiNextjsFill />,
+  "React.js": <FaReact />,
+  // Adicione outros ícones conforme necessário
+};
 
 export const ExperienceTimeline = ({ experiences }: Props) => {
   return (
@@ -32,9 +38,7 @@ export const ExperienceTimeline = ({ experiences }: Props) => {
             icon={
               <div className="bg-dark-gray h-full w-full flex rounded-full">
                 {
-                  { "Next.js": <RiNextjsFill />, "React.js": <FaReact /> }[
-                    experience.icon
-                  ]
+                  iconMap[experience.icon as IconProject] || null
                 }
               </div>
             }
