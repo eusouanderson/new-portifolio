@@ -76,7 +76,7 @@ export const ParticlesBG = () => {
           number: {
             density: {
               enable: true,
-              area: 800,
+              //area: 800,
             },
             value: 100, // Increased particle count for more density
           },
