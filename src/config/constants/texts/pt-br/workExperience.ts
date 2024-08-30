@@ -37,24 +37,24 @@ export const workExperience: WorkExperienceTexts = {
       
     },
     {
-      name: "Desenvolvedor Frontend",
+      name: "Desenvolvedor Backend",
       companyName: "App Data",
       description:
-        "Como Desenvolvedor Frontend na Mestres da Web, utilizei React, Next.js e TypeScript para criar aplicações web de alta qualidade. Fui responsável por desenvolver interfaces de usuário interativas e acessíveis e por integrar o frontend com o backend. Trabalhei em um ambiente ágil e contribui significativamente para a entrega de software de primeira linha.",
-      from: "2023-01-01",
+        "Como Desenvolvedor Backend na App Data, fui responsável por projetar e implementar APIs robustas e escaláveis utilizando Node.js e Express. Trabalhei na criação de soluções backend que garantiram a alta performance e segurança das aplicações. Além disso, integrei sistemas complexos com bancos de dados relacionais e não relacionais, utilizando tecnologias como MongoDB e PostgreSQL. Contribuí significativamente para a arquitetura de microservices, garantindo a modularidade e manutenção do sistema.",
+      from: "2014-01-01",
       to: "2024-06-01",
-      tags: [tags["React.js"], tags["Next.js"], tags["TypeScript"]],
-      icon: "React.js",
+      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"], tags["PostgreSQL"]],
+      
     },
     {
-      name: "Estagiário em Desenvolvimento Frontend",
+      name: "Estagiário em Desenvolvimento Backend",
       companyName: "App Data",
       description:
-        "Como Estagiário em Desenvolvimento Frontend na Mestres da Web, trabalhei com React para desenvolver aplicações web, contribuindo para a criação de interfaces amigáveis e garantindo a responsividade e o desempenho das aplicações. Ganhei experiência em TypeScript e integração com serviços de backend, aprendendo as melhores práticas do desenvolvimento frontend.",
-      from: "2022-07-05",
-      to: "2022-12-01",
-      tags: [tags["React.js"], tags["TypeScript"]],
-      icon: "React.js",
-    },
+        "Durante meu estágio em Desenvolvimento Backend na App Data, adquiri experiência prática na construção de APIs RESTful e na integração de sistemas com diferentes serviços backend. Trabalhei com Node.js e Express para desenvolver soluções backend eficientes e escaláveis. Além disso, ganhei experiência com bancos de dados como MongoDB, e implementei soluções que melhoraram a eficiência e performance das aplicações.",
+      from: "2009-07-05",
+      to: "2014-12-01",
+      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
+      
+    }
   ],
 };
