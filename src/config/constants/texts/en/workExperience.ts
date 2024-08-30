@@ -1,5 +1,4 @@
 import { WorkExperienceTexts } from "@/types/texts";
-import { technologies } from "../../technologies";
 import { tags } from "../../tags";
 
 export const workExperience: WorkExperienceTexts = {
