@@ -11,7 +11,6 @@ import { SiNextdotjs, SiVite } from "react-icons/si";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { countYears, formatDate } from "@/lib/date";
 
-
 const iconMap: { [key in IconProject]?: JSX.Element } = {
   "React.js": <FaReact />,
   "Vite": <SiVite />,
@@ -23,10 +22,9 @@ const iconMap: { [key in IconProject]?: JSX.Element } = {
   "CSS3": <FaCss3Alt />,
   "JavaScript": <IoLogoJavascript />,
   "Python": <FaPython />,
-  
 };
 
-export const ExperienceTimeline = ({ experiences }: Props) => {
+export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] }) => {
   return (
     <div className="mt-10 md:mt-20 flex flex-col">
       <VerticalTimeline>

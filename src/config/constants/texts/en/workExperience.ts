@@ -1,58 +1,59 @@
 import { WorkExperienceTexts } from "@/types/texts";
+import { technologies } from "../../technologies";
 import { tags } from "../../tags";
 
 export const workExperience: WorkExperienceTexts = {
-  title: "Experiência Profissional",
+  title: "Professional Experience",
   experiences: [
     {
-      name: "Engenheiro de Software",
-      companyName: "Houg · Autônomo",
+      name: "Software Engineer",
+      companyName: "Agência Close",
       description:
-        "Atualmente, trabalho como Engenheiro de Software na Houg, desenvolvendo sistemas web abrangentes. Minhas responsabilidades incluem a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados eficientes utilizando MongoDB. Foco na qualidade e performance, buscando soluções inovadoras que garantam a escalabilidade e segurança dos nossos serviços.",
-      from: "2024-04-01",
-      to: "Presente",
-      tags: [tags["MongoDB"], tags["API"], tags["Desenvolvimento Web"]],
-      // 'icon' é opcional aqui, pode ser omitido
-    },
-    {
-      name: "Engenheiro de Software",
-      companyName: "Agência Close · Tempo Integral",
-      description:
-        "Na Agência Close, sou responsável pelo desenvolvimento do backend e das APIs dos nossos softwares, utilizando Electron e Vue.js. Trabalho na arquitetura e implementação de soluções escaláveis e eficientes, garantindo uma integração perfeita entre frontend e backend e contribuindo para uma experiência de usuário superior.",
+        "At Agência Close, I am responsible for backend and API development for our software, using Electron and Vue.js. I work on the architecture and implementation of scalable and efficient solutions, ensuring seamless integration between frontend and backend, and contributing to a superior user experience.",
       from: "2023-09-01",
-      to: "Presente",
-      tags: [tags["Electron"], tags["Vue.js"], tags["Desenvolvimento Backend"]],
-      
+      to: "Present",
+      tags: [tags["FastAPI"], tags["Vue.js"], tags["Backend Development"], tags["Render"]],
+      iconName: "Vite",
     },
     {
-      name: "Desenvolvedor Fullstack",
+      name: "Software Engineer",
+      companyName: "Houg · Freelance",
+      description:
+        "Currently, I work as a Software Engineer at Houg, developing comprehensive web systems. My responsibilities include creating and maintaining dynamic websites, robust APIs, and efficient databases with MongoDB. I focus on quality and performance, seeking innovative solutions that ensure scalability and security of our services.",
+      from: "2024-04-01",
+      to: "2024-08-01",
+      tags: [tags["MongoDB"], tags["API"], tags["Web Development"], tags["React.js"]],
+      iconName: "React.js",
+    },
+    {
+      name: "Fullstack Developer",
       companyName: "Allscripts · Freelance",
       description:
-        "Como Desenvolvedor Fullstack na Allscripts, fui responsável pela manutenção de projetos, correção de bugs, análise de dados e feedbacks de usuários. Trabalhei na criação de melhorias e atualizações, desenvolvimento de backends com Django, Flask, FastAPI, e Vue.js, além de pequenos softwares com Electron.js.",
+        "As a Fullstack Developer at Allscripts, I was responsible for maintaining projects, fixing bugs, analyzing data, and user feedback. I worked on creating improvements and updates, developing backends with Django, Flask, FastAPI, and Vue.js, and small software with Electron.js.",
       from: "2010-02-01",
       to: "2023-11-01",
       tags: [tags["Django"], tags["Flask"], tags["FastAPI"], tags["Vue.js"], tags["Electron"]],
-      
+      iconName: "Python",
     },
     {
-      name: "Desenvolvedor Frontend",
-      companyName: "Mestres da Web",
+      name: "Backend Developer",
+      companyName: "App Data",
       description:
-        "Como Desenvolvedor Frontend na Mestres da Web, utilizo React, Next.js e TypeScript para desenvolver aplicações web de alta qualidade. Minhas responsabilidades incluem criar interfaces de usuário rápidas, interativas e acessíveis. Colaboro com a equipe de backend para integrar o frontend com os serviços do backend e garantir funcionalidade perfeita. Além disso, cuido do deployment das aplicações. Trabalhando em um ambiente ágil, contribuo ativamente para os esforços da equipe em entregar software de ponta.",
-      from: "2023-01-01",
+        "As a Backend Developer at App Data, I was responsible for designing and implementing robust and scalable APIs using Node.js and Express. I worked on creating backend solutions that ensured high performance and security of applications. Additionally, I integrated complex systems with relational and non-relational databases, using technologies such as MongoDB and PostgreSQL. I contributed significantly to the microservices architecture, ensuring the modularity and maintainability of the system.",
+      from: "2014-01-01",
       to: "2024-06-01",
-      tags: [tags["React.js"], tags["Next.js"], tags["TypeScript"]],
-      icon: "Next.js", // Valor de exemplo
+      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"], tags["PostgreSQL"]],
+      iconName: "Node.js",
     },
     {
-      name: "Estagiário em Desenvolvimento Frontend",
-      companyName: "Mestres da Web",
+      name: "Backend Development Intern",
+      companyName: "App Data",
       description:
-        "Como Estagiário em Desenvolvimento Frontend na Mestres da Web, trabalhei no desenvolvimento de aplicações web utilizando React. Colaborei com a equipe para criar interfaces de usuário amigáveis e garantir a responsividade e performance das aplicações. Também ganhei experiência com TypeScript e na integração do frontend com serviços backend. Durante o estágio, aprendi as melhores práticas em desenvolvimento frontend e contribui para os projetos da equipe.",
-      from: "2022-07-05",
-      to: "2022-12-01",
-      tags: [tags["React.js"], tags["TypeScript"]],
-      icon: "React.js", // Valor de exemplo
-    },
+        "During my internship in Backend Development at App Data, I gained practical experience in building RESTful APIs and integrating systems with various backend services. I worked with Node.js and Express to develop efficient and scalable backend solutions. Additionally, I gained experience with databases such as MongoDB and implemented solutions that improved the efficiency and performance of applications.",
+      from: "2009-07-05",
+      to: "2014-12-01",
+      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
+      iconName: "Python",
+    }
   ],
 };

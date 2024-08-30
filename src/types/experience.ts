@@ -1,7 +1,9 @@
 import { IconType } from "react-icons";
 import { Tag } from "./tag";
 
-export type IconProject = "Next.js" | "React.js" | "Vue.js";
+
+export type IconProject = "React.js" | "Vite" | "Next.js" | "Node.js" | ".NET" | "Java" | "HTML5" | "CSS3" | "JavaScript" | "Python";
+
 
 
 export interface Experience {
