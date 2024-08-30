@@ -10,7 +10,7 @@ interface Props {
 export const AboutMe = ({ texts }: Props) => {
   return (
     <section
-      id="about-me"
+      id="hero"
       className="flex flex-col px-12 justify-center items-center text-white h-dvh [&>*]:z-10"
     >
       <Image

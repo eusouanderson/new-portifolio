@@ -7,66 +7,78 @@ export type Tags = {
 export const tags: Tags = {
   "Next.js": {
     name: "Next.js",
-    color: "#39b89a",
+    color: "#00d8a5", // Verde menta
   },
   Typescript: {
     name: "Typescript",
-    color: "#3178c6",
+    color: "#3178c6", // Azul claro
   },
   PrismaORM: {
     name: "PrismaORM",
-    color: "#2d3748",
+    color: "#1a202c", // Cinza escuro
   },
   PostgreSQL: {
     name: "PostgreSQL",
-    color: "#336791",
+    color: "#336791", // Azul escuro
   },
   "React.js": {
     name: "React.js",
-    color: "#61dafb",
+    color: "#61dafb", // Azul React
   },
   ".NET": {
     name: ".NET",
-    color: "#512bd4",
+    color: "#7f00ff", // Roxo vibrante
   },
   Django: {
     name: "Django",
-    color: "#092147",
+    color: "#092147", // Azul profundo
   },
   Python: {
     name: "Python",
-    color: "#3776ab",
+    color: "#ffe873", // Amarelo Python
   },
   jQuery: {
     name: "jQuery",
-    color: "#0769ad",
+    color: "#0769ad", // Azul jQuery
   },
   Java: {
     name: "Java",
-    color: "#007396",
+    color: "#f89820", // Laranja Java
   },
   MongoDB: {
     name: "MongoDB",
-    color: "#13aa52",
+    color: "#47a248", // Verde MongoDB
   },
   API: {
     name: "API",
-    color: "#e34f26",
+    color: "#e34f26", // Laranja forte
   },
-  "Electron": {
+  Electron: {
     name: "Electron",
-    color: "#47848f",
+    color: "#47848f", // Azul esverdeado
   },
   "Vue.js": {
     name: "Vue.js",
-    color: "#42b883",
+    color: "#42b883", // Verde claro
   },
   "FastAPI": {
     name: "FastAPI",
-    color: "#009688",
+    color: "#009688", // Verde FastAPI
   },
   "Flask": {
     name: "Flask",
-    color: "#000000",
+    color: "#ffffff", // Branco
+  },
+  Render: {
+    name: "Render",
+    color: "#ff4500", // Laranja vivo
+  },
+  "Web Development": {
+    name: "Web Development",
+    color: "#ff6347", // Tomate
+  },
+  "Backend Development": {
+    name: "Backend Development",
+    color: "#ffd700", // Amarelo ouro
   },
 };

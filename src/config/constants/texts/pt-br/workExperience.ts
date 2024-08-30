@@ -1,6 +1,5 @@
 import { WorkExperienceTexts } from "@/types/texts";
-import { FaReact } from "react-icons/fa";
-import { RiNextjsFill } from "react-icons/ri";
+import { tecnologies } from "../../tecnologies";
 import { tags } from "../../tags";
 
 export const workExperience: WorkExperienceTexts = {
@@ -8,23 +7,23 @@ export const workExperience: WorkExperienceTexts = {
   experiences: [
     {
       name: "Engenheiro de Software",
-      companyName: "Houg · Autônomo",
-      description:
-        "Atualmente, atuo como Engenheiro de Software na Houg, desenvolvendo sistemas web abrangentes. Minhas responsabilidades incluem a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados eficientes com MongoDB. Foco na qualidade e performance, buscando soluções inovadoras que garantam escalabilidade e segurança dos nossos serviços.",
-      from: "2024-04-01",
-      to: "Presente",
-      tags: [tags["MongoDB"], tags["API"], tags["Web Development"]],
-      
-    },
-    {
-      name: "Engenheiro de Software",
       companyName: "Agência Close",
       description:
         "Na Agência Close, sou responsável pelo desenvolvimento do backend e das APIs para nossos softwares, utilizando Electron e Vue.js. Trabalho na arquitetura e implementação de soluções escaláveis e eficientes, assegurando a integração perfeita entre frontend e backend e contribuindo para uma experiência de usuário superior.",
       from: "2023-09-01",
       to: "Presente",
-      tags: [tags["Electron"], tags["Vue.js"], tags["Backend Development"]],
-      
+      tags: [tags["FastAPI"], tags["Vue.js"], tags["Backend Development"], tags["Render"]],
+      iconName: "Vite", 
+    },
+    {
+      name: "Engenheiro de Software",
+      companyName: "Houg · Autônomo",
+      description:
+        "Atualmente, atuo como Engenheiro de Software na Houg, desenvolvendo sistemas web abrangentes. Minhas responsabilidades incluem a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados eficientes com MongoDB. Foco na qualidade e performance, buscando soluções inovadoras que garantam escalabilidade e segurança dos nossos serviços.",
+      from: "2024-04-01",
+      to: "2024-08-01",
+      tags: [tags["MongoDB"], tags["API"], tags["Web Development"], tags["React.js"]],
+      iconName: "React.js", 
     },
     {
       name: "Desenvolvedor Fullstack",
@@ -34,7 +33,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2010-02-01",
       to: "2023-11-01",
       tags: [tags["Django"], tags["Flask"], tags["FastAPI"], tags["Vue.js"], tags["Electron"]],
-      
+      iconName: "Python", 
     },
     {
       name: "Desenvolvedor Backend",
@@ -44,7 +43,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2014-01-01",
       to: "2024-06-01",
       tags: [tags["Node.js"], tags["Express"], tags["MongoDB"], tags["PostgreSQL"]],
-      
+      iconName: "Node.js", 
     },
     {
       name: "Estagiário em Desenvolvimento Backend",
@@ -54,7 +53,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2009-07-05",
       to: "2014-12-01",
       tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
-      
+      iconName: "Python", 
     }
   ],
 };

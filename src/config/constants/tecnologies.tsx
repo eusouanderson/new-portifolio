@@ -1,5 +1,4 @@
 import { Tecnology } from "@/types/tecnologies";
-import { AArrowDown } from "lucide-react";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { FaCss3Alt, FaHtml5, FaJava, FaNode, FaPython, FaReact } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";

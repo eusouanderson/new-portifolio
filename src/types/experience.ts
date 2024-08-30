@@ -1,7 +1,7 @@
 import { IconType } from "react-icons";
 import { Tag } from "./tag";
 
-export type IconProject = "Next.js" | "React.js";
+export type IconProject = "Next.js" | "React.js" | "Vue.js";
 
 
 export interface Experience {
@@ -11,5 +11,5 @@ export interface Experience {
   tags: Tag[];
   from: string;
   to?: string;
-  icon?: IconProject;
+  iconName?: IconProject;
 }

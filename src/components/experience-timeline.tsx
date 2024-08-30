@@ -5,18 +5,25 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { FaReact } from "react-icons/fa";
-import { RiNextjsFill } from "react-icons/ri";
+import { FaReact, FaCss3Alt, FaHtml5, FaJava, FaNode, FaPython } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io";
+import { SiNextdotjs, SiVite } from "react-icons/si";
+import { AiOutlineDotNet } from "react-icons/ai";
 import { countYears, formatDate } from "@/lib/date";
 
-interface Props {
-  experiences: Experience[];
-}
 
 const iconMap: { [key in IconProject]?: JSX.Element } = {
-  "Next.js": <RiNextjsFill />,
   "React.js": <FaReact />,
-  // Adicione outros ícones conforme necessário
+  "Vite": <SiVite />,
+  "Next.js": <SiNextdotjs />,
+  "Node.js": <FaNode />,
+  ".NET": <AiOutlineDotNet />,
+  "Java": <FaJava />,
+  "HTML5": <FaHtml5 />,
+  "CSS3": <FaCss3Alt />,
+  "JavaScript": <IoLogoJavascript />,
+  "Python": <FaPython />,
+  
 };
 
 export const ExperienceTimeline = ({ experiences }: Props) => {
@@ -36,9 +43,9 @@ export const ExperienceTimeline = ({ experiences }: Props) => {
               experience.to ? formatDate(experience.to, "MM/yy") : "Momento"
             } - ${countYears(experience.from, experience.to)}`}
             icon={
-              <div className="bg-dark-gray h-full w-full flex rounded-full">
+              <div style={{ backgroundColor: '#232631', height: '60px', width: '60px',marginLeft: '0px', display: 'flex', borderRadius: '50%' }}>
                 {
-                  iconMap[experience.icon as IconProject] || null
+                  iconMap[experience.iconName as IconProject] || null
                 }
               </div>
             }

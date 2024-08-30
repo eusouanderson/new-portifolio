@@ -23,7 +23,7 @@ interface Props {
 export const Hero = ({ texts }: Props) => {
   return (
     <section
-      id="hero"
+      id="about-me"
       // className="grid grid-cols-2 px-12 max-lg:grid-cols-1 h-dvh"
       className="flex flex-col justify-center [&>*]:z-10"
     >

@@ -1,7 +1,7 @@
 import { NavbarTexts } from "@/types/texts";
 
 export const navbar: NavbarTexts = {
-  aboutMe: "About me",
+  aboutMe: "Currilum",
   contact: "Contact",
   home: "Home",
   workExp: "Work Experience",
