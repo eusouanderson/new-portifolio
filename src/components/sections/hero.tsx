@@ -1,11 +1,8 @@
 "use client";
-import Spline from "@splinetool/react-spline";
 import "@/styles/custom-animation.css";
 import { HeroTexts } from "@/types/texts";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ComputersCanvas } from "../canvas/computer";
-import { ParticlesBG } from "../particles";
 import { downloadFile } from "@/utils/downloadFile";
 import { Button } from "../ui/button";
 import { motionVar } from "@/lib/motion";
@@ -13,8 +10,6 @@ import { ShinyButton } from "../shiny-button";
 import { FaLinkedinIn } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import Link from "next/link";
-import { Tooltip } from "react-tooltip";
-import "react-tooltip/dist/react-tooltip.css";
 
 interface Props {
   texts: HeroTexts;
@@ -24,7 +19,6 @@ export const Hero = ({ texts }: Props) => {
   return (
     <section
       id="about-me"
-      // className="grid grid-cols-2 px-12 max-lg:grid-cols-1 h-dvh"
       className="flex flex-col justify-center [&>*]:z-10"
     >
       <div className="flex gap-4 items-start mx-4 md:ml-[10%] md:mr-0 mt-6">
@@ -34,58 +28,24 @@ export const Hero = ({ texts }: Props) => {
         </div>
 
         <div className="text-white flex flex-col gap-2">
-          {/* <span className="text-5xl">Ola,</span>
-        // <span className="text-6xl">Meu nome é <span>Anderson Rodrigues</span></span>
-        <span className="text-4xl">Desenvolvedor Fullstack</span> */}
           <motion.span
             className="text-4xl max-md:text-3xl max-sm:text-xl"
-            // initial={{
-            //   x: -100,
-            //   opacity: 0,
-            // }}
-            // viewport={{
-            //   once: true,
-            // }}
-            // whileInView={{
-            //   x: 0,
-            //   opacity: 1,
-            //   transition: {
-            //     duration: 0.5,
-            //   },
-            // }}
             variants={motionVar}
             initial={"initial"}
-            viewport={{
-              once: true,
-            }}
+            viewport={{ once: true }}
             whileInView={"fade-in"}
-            transition={{
-              duration: 0.5,
-            }}
+            transition={{ duration: 0.5 }}
           >
             {texts.greetings}
-            <span className="text-black-blue ml-2 font-bold">Anderson Rodrigues</span>
+            <span className="font-bold">Anderson Rodrigues</span>
           </motion.span>
           <motion.h1
             className="flex flex-wrap text-6xl font-bold z-10 max-md:text-5xl max-sm:text-3xl"
             variants={motionVar}
             initial={"initial"}
-            viewport={{
-              once: true,
-            }}
+            viewport={{ once: true }}
             whileInView={"fade-in"}
-            transition={{
-              delay: 0.3,
-              duration: 0.5,
-            }}
-            // whileInView={{
-            //   x: 0,
-            //   opacity: 1,
-            //   transition: {
-            //     delay: 0.3,
-            //     duration: 0.5,
-            //   },
-            // }}
+            transition={{ delay: 0.3, duration: 0.5 }}
           >
             {texts.title.map((text, index) => (
               <span
@@ -100,14 +60,9 @@ export const Hero = ({ texts }: Props) => {
             className="z-10 max-md:text-sm max-sm:text-xs"
             variants={motionVar}
             initial={"initial"}
-            viewport={{
-              once: true,
-            }}
+            viewport={{ once: true }}
             whileInView={"fade-in"}
-            transition={{
-              delay: 0.5,
-              duration: 0.5,
-            }}
+            transition={{ delay: 0.5, duration: 0.5 }}
           >
             {texts.subtitle}
           </motion.span>
@@ -124,28 +79,28 @@ export const Hero = ({ texts }: Props) => {
               {texts.cvButton}
             </Button>
             <Link
-              href="https://www.linkedin.com/in/Anderson-Rodrigues/"
+              href="https://www.linkedin.com/in/anderson-rodrigues-24003823b/"
               target="__blank"
-              className="rounded-full"
+              className="rounded-full md:ml-2 bg-light-white"
               rel="external"
             >
               <ShinyButton
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Linkedin"
                 data-tooltip-place="bottom"
-                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full"
+                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full linkedin-icon"
               >
                 <FaLinkedinIn />
               </ShinyButton>
             </Link>
             <Link
-              href="https://github.com/AndersonRodrigues479"
+              href="https://github.com/eusouanderson"
               target="__blank"
-              className="rounded-full"
+              className="rounded-full md:ml-2 bg-light-white hover:bg-light-white"
               rel="external"
             >
               <ShinyButton
-                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full"
+                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full github-icon"
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Github"
                 data-tooltip-place="bottom"
