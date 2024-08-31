@@ -26,7 +26,7 @@ const iconMap: { [key in IconProject]?: JSX.Element } = {
 
 export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] }) => {
   return (
-    <div className="mt-10 md:mt-20 flex flex-col">
+    <div className="mt-10 md:mt-20 flex flex-col items-center">
       <VerticalTimeline>
         {experiences.map((experience, index) => (
           <VerticalTimelineElement
@@ -41,7 +41,7 @@ export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] 
               experience.to ? formatDate(experience.to, "MM/yy") : "Momento"
             } - ${countYears(experience.from, experience.to)}`}
             icon={
-              <div style={{ backgroundColor: '#232631', height: '60px', width: '60px',marginLeft: '0px', display: 'flex', borderRadius: '50%' }}>
+              <div style={{ backgroundColor: '#232631', height: '60px', width: 'auto',marginLeft: 'auto', display: 'flex', borderRadius: '50%' }}>
                 {
                   iconMap[experience.iconName as IconProject] || null
                 }
