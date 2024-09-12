@@ -44,7 +44,7 @@ export const ParticlesBG = () => {
           },
           modes: {
             push: {
-              quantity: 5,
+              quantity: 10,
             },
             repulse: {
               distance: 150,
@@ -54,7 +54,7 @@ export const ParticlesBG = () => {
         },
         particles: {
           color: {
-            value: "#c0c0c0", // Light grey particles for a subtle effect
+            value: "#ffffff", // Light grey particles for a subtle effect
           },
           links: {
             color: "#ffffff",
@@ -81,7 +81,7 @@ export const ParticlesBG = () => {
             value: 100, // Increased particle count for more density
           },
           opacity: {
-            value: 0.2, // Increased opacity for better visibility
+            value: 1, // Increased opacity for better visibility
           },
           shape: {
             type: "slim",

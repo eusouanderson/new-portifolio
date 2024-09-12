@@ -11,10 +11,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "light-blue": "#24afc1",
-        "primary": "#1795a8",
-        "secondary": "#24afc1",
-        "accent": "#ffd700",
+        "light-blue": "#800080", // Roxo
+        "primary": "#6a0dad", // Roxo escuro
+        "secondary": "#4b0082", // Índigo (tom de roxo)
+        "accent": "#daa520", // Dourado mais suave
       },
       backgroundImage: {
         "background-home": "url('/assets/images/bg.png')",

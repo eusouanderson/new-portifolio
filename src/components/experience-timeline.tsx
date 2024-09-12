@@ -41,7 +41,7 @@ export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] 
               experience.to ? formatDate(experience.to, "MM/yy") : "Momento"
             } - ${countYears(experience.from, experience.to)}`}
             icon={
-              <div style={{ backgroundColor: '#232631', height: '60px', width: 'auto',marginLeft: 'auto', display: 'flex', borderRadius: '50%' }}>
+              <div style={{ backgroundColor: '#800080', height: '60px', width: 'auto',marginLeft: 'auto', display: 'flex', borderRadius: '50%' }}>
                 {
                   iconMap[experience.iconName as IconProject] || null
                 }
