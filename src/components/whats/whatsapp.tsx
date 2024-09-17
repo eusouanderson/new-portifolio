@@ -1,4 +1,4 @@
-import { FaWhatsapp } from "react-icons/fa"; // Importa o ícone do WhatsApp
+import { FaWhatsapp } from "react-icons/fa"; 
 
 interface WhatsAppButtonProps {
   phoneNumber: string;
