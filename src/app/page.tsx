@@ -3,11 +3,11 @@
 
 import { useState } from "react";
 import { MainPage } from "@/components/main-page";
-import { Planos } from "@/components/Planos";
+import Planos from "@/components/Planos"; // Corrija a importação aqui
 import { texts } from "@/config/constants";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState("main"); // Estado para controlar a página atual
+  const [currentPage, setCurrentPage] = useState("main");
 
   const renderPage = () => {
     switch (currentPage) {

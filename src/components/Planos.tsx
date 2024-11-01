@@ -1,15 +1,17 @@
 // src/components/Planos.tsx
+import React from "react";
 
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-
-export const Planos = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Redireciona usando o Router do Next.js
-    router.push("https://plano-de-ensino-six.vercel.app/");
-  }, [router]);
-
-  return null; // Não renderiza nada, pois redireciona imediatamente
+const Planos = () => {
+  return (
+    <div>
+      <h2>Planos</h2>
+      <iframe
+        src="https://plano-de-ensino-six.vercel.app/"
+        style={{ width: '100%', height: '600px', border: 'none' }}
+        title="Plano de Ensino"
+      />
+    </div>
+  );
 };
+
+export default Planos;
