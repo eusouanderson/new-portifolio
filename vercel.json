@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/planos/(.*)",
-      "destination": "https://plano-de-ensino-six.vercel.app/$1"
+      "source": "/planos",
+      "destination": "https://plano-de-ensino-six.vercel.app/"
     }
   ]
 }

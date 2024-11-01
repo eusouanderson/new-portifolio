@@ -41,10 +41,8 @@ export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] 
               experience.to ? formatDate(experience.to, "MM/yy") : "Momento"
             } - ${countYears(experience.from, experience.to)}`}
             icon={
-              <div style={{ backgroundColor: '#800080', height: '60px', width: 'auto',marginLeft: 'auto', display: 'flex', borderRadius: '50%' }}>
-                {
-                  iconMap[experience.iconName as IconProject] || null
-                }
+              <div style={{ backgroundColor: '#800080', height: '60px', width: 'auto', marginLeft: 'auto', display: 'flex', borderRadius: '50%' }}>
+                {iconMap[experience.iconName as IconProject] || null}
               </div>
             }
             className="[&>*]:z-10"
@@ -57,15 +55,15 @@ export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] 
             </h4>
             {/* <p>{experience.description}</p> */}
             <div className="flex flex-wrap gap-2">
-              {experience.tags.map((tag) => (
+              {experience.tags.map((tag, tagIndex) => ( // Adicionando tagIndex como segundo parâmetro
                 <span
-                  key={tag.name}
+                  key={tag?.name || `tag-${tagIndex}`} // Usa `tagIndex` corretamente
                   style={{
-                    color: tag.color,
+                    color: tag?.color || '#ffffff', // Verifica se tag e tag.color estão definidos
                   }}
                   className={`text-sm md:text-base`}
                 >
-                  #{tag.name}
+                  #{tag?.name || 'Unknown'} {/* Exibe 'Unknown' se o nome não estiver definido */}
                 </span>
               ))}
             </div>

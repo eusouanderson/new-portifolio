@@ -1,4 +1,3 @@
-// src/components/sections/Projects.ts
 import React from "react";
 import { ProjectsTexts } from "@/types/texts";
 
