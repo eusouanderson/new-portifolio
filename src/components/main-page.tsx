@@ -8,7 +8,7 @@ import { Experiences } from "./sections/experiences";
 import { LanguageSwitch } from "./language-switch";
 import { Contact } from "./sections/contact";
 import React, { Suspense, lazy } from 'react';
-//import  ProjectList  from "./project-list/ProjectList";
+import  ProjectList  from "./project-list/ProjectList";
 
 interface Props {
   texts?: Texts;

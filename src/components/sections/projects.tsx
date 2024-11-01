@@ -1,15 +1,12 @@
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { SliderProjects } from "../slider-projects";
-import { Project } from "@/types/projects";
+// src/components/sections/Projects.ts
+import React from "react";
 import { ProjectsTexts } from "@/types/texts";
 
 interface Props {
   projectText: ProjectsTexts;
 }
 
-export const Projects = ({ projectText }: Props) => {
+const Projects = ({ projectText }: Props) => {
   return (
     <section
       id="projects"
@@ -17,8 +14,11 @@ export const Projects = ({ projectText }: Props) => {
     >
       <h2 className="text-3xl md:text-5xl font-bold text-center">{projectText.title}</h2>
       <div className="flex flex-wrap">
-        <SliderProjects projects={projectText.projects} />
+        {/* Exiba os projetos aqui */}
       </div>
     </section>
   );
 };
+
+// Exporta como default
+export default Projects;
