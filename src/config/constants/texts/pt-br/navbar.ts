@@ -6,5 +6,5 @@ export const navbar: NavbarTexts = {
   home: "Início",
   workExp: "Experiência",
   tech: "Tecnologias",
-  projects: "Projetos",
+  projects: "Repositorios",
 }
