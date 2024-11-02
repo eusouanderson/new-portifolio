@@ -7,7 +7,7 @@ import { ToastSetup } from "@/lib/toast";
 
 export const metadata: Metadata = {
   title: "Portfólio | Anderson",
-  description: "Portfólio de Anderson",
+  description: "Portfólio d0 Anderson",
 };
 
 export default function RootLayout({
