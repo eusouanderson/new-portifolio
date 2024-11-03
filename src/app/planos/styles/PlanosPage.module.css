@@ -1,6 +1,6 @@
 
 .container {
-  padding: 20px;
+  padding: 5px;
   height: 100vh; /* Altura total da viewport */
   width: 100vw; /* Largura total da viewport */
   margin: 0; /* Remove margens para garantir que ocupe a tela inteira */
