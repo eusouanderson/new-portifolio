@@ -24,10 +24,10 @@ export const ParticlesBG = () => {
       options={{
         background: {
           color: {
-            value: "#0a0b0d", // Darker background for a modern look
+            value: "#000000", 
           },
         },
-        fpsLimit: 120,
+        fpsLimit: 240,
         interactivity: {
           events: {
             onClick: {
@@ -48,19 +48,19 @@ export const ParticlesBG = () => {
             },
             repulse: {
               distance: 150,
-              duration: 0.4,
+              duration: 0.8,
             },
           },
         },
         particles: {
           color: {
-            value: "#ffffff", // Light grey particles for a subtle effect
+            value: "#ffffff", 
           },
           links: {
             color: "#ffffff",
-            distance: 150,
+            distance: 256,
             enable: true,
-            opacity: 0.2,
+            opacity: 0.8,
             width: 1,
           },
           move: {
@@ -70,24 +70,24 @@ export const ParticlesBG = () => {
               default: "bounce",
             },
             random: false,
-            speed: 2, // Slightly slower for a smoother effect
+            speed: 2, 
             straight: false,
           },
           number: {
             density: {
-              enable: true,
+              enable: false,
               //area: 800,
             },
-            value: 100, // Increased particle count for more density
+            value: 50,
           },
           opacity: {
-            value: 1, // Increased opacity for better visibility
+            value: 1, 
           },
           shape: {
             type: "slim",
           },
           size: {
-            value: { min: 1, max: 6 }, // Slightly larger particles
+            value: { min: 1, max: 16 }, 
           },
         },
         detectRetina: true,

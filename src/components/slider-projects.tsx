@@ -7,7 +7,7 @@ import { Project } from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { cn } from "@/lib/utils";
+
 
 interface Props {
   projects: Project[];
@@ -17,7 +17,7 @@ export function SliderProjects({ projects }: Props) {
   return (
     <Swiper
       spaceBetween={20}
-      // slidesPerView={"auto"}
+      
       breakpoints={{
         640: {
           slidesPerView: 1,

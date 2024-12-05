@@ -20,7 +20,7 @@ export const ContactForm = ({ texts }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitted(true);
-    // Aqui você pode adicionar lógica para enviar o formulário, como chamar handleSend ou enviar por outra API.
+    // Aqui, você pode integrar a lógica para lidar com o envio de dados, se necessário
   };
 
   if (result?.isSuccess || isSubmitted) {
@@ -42,12 +42,12 @@ export const ContactForm = ({ texts }: Props) => {
   }
 
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="flex justify-center items-center w-full px-4 sm:px-8 lg:px-16">
       <form
         onSubmit={handleSubmit}
         action="https://formsubmit.co/eusouanderson459@gmail.com"
         method="POST"
-        className="flex flex-col gap-4 mt-8 p-6 rounded-lg shadow-lg max-w-md w-full"
+        className="flex flex-col gap-4 mt-8 p-6 rounded-lg shadow-lg max-w-md w-full sm:max-w-lg lg:max-w-xl"
       >
         <div className="space-y-2">
           <InputLabel htmlFor="name">{texts.nameLabel}</InputLabel>
@@ -80,7 +80,7 @@ export const ContactForm = ({ texts }: Props) => {
             className={cn(
               "color text-black shadow-lg border border-black-blue h-40 py-2 text-sm px-4 rounded-lg w-full",
               (result?.errors?.fieldErrors.message?.length || 0) > 0 &&
-                "border-error"
+              "border-error"
             )}
             placeholder={texts.messagePlaceholder}
             name="message"
