@@ -27,7 +27,7 @@ export const ParticlesBG = () => {
             value: "#000000", 
           },
         },
-        fpsLimit: 240,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
@@ -47,7 +47,7 @@ export const ParticlesBG = () => {
               quantity: 10,
             },
             repulse: {
-              distance: 150,
+              distance: 50,
               duration: 0.8,
             },
           },
@@ -58,7 +58,7 @@ export const ParticlesBG = () => {
           },
           links: {
             color: "#ffffff",
-            distance: 256,
+            distance: 156.8,
             enable: true,
             opacity: 0.8,
             width: 1,
