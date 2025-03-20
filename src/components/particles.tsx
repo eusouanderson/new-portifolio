@@ -24,7 +24,7 @@ export const ParticlesBG = () => {
       options={{
         background: {
           color: {
-            value: "#000000", 
+            value: "#0000ff", 
           },
         },
         fpsLimit: 60,
@@ -44,7 +44,7 @@ export const ParticlesBG = () => {
           },
           modes: {
             push: {
-              quantity: 10,
+              quantity: 5,
             },
             repulse: {
               distance: 50,

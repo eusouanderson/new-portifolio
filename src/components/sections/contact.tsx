@@ -18,7 +18,7 @@ export const Contact = ({ texts }: Props) => {
           <div className="w-1 h-20 sm:h-64 violet-gradient" />
         </div>
         <div className="w-full max-w-lg">
-          <h2 className="text-2xl md:text-4xl font-bold">{texts.title}</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center">{texts.title}</h2>
           <ContactForm texts={texts} />
         </div>
       </div>

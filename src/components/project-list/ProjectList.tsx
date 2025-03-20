@@ -63,11 +63,11 @@ const ProjectList: React.FC = () => {
       id="projects"
       className="flex flex-col max-sm:justify-end max-sm:pb-8 h-auto min-h-dvh justify-center [&>*]:z-10 text-white"
     >
-      <h2 className="text-3xl md:text-5xl font-bold text-center mt-18">Meus Repositórios no GitHub</h2>
+      
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 600, disableOnInteraction: false }} // Define o autoplay para 3 segundos
+        autoplay={{ delay: 600, disableOnInteraction: false }} 
         spaceBetween={30}
         slidesPerView={1}
         className="mt-12 w-full md:w-3/4 mx-auto"
