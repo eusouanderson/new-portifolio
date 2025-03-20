@@ -42,80 +42,84 @@ export const ContactForm = ({ texts }: Props) => {
   }
 
   return (
-   <div className="flex justify-center items-center w-full px-4 sm:px-8 lg:px-16">
-  <form
-    onSubmit={handleSubmit}
-    action="https://formsubmit.co/eusouanderson459@gmail.com"
-    method="POST"
-    className="flex flex-col gap-6 mt-8 p-4 sm:p-6 lg:p-8 rounded-lg shadow-lg max-w-lg w-full sm:max-w-xl lg:max-w-2xl"
-  >
-    <div className="space-y-2">
-      <InputLabel htmlFor="name" className="text-sm sm:text-base lg:text-lg">
-        {texts.nameLabel}
-      </InputLabel>
-      <Input
-        placeholder={texts.namePlaceholder}
-        name="name"
-        id="name"
-        className="w-full text-sm sm:text-base lg:text-lg"
-        required
-        error={(result?.errors?.fieldErrors.name?.length || 0) > 0}
-      />
-      <ErrorMessage className="text-xs sm:text-sm lg:text-base">
-        {result?.errors?.fieldErrors.name?.[0]}
-      </ErrorMessage>
-    </div>
-
-    <div className="space-y-2">
-      <InputLabel htmlFor="email" className="text-sm sm:text-base lg:text-lg">
-        {texts.emailLabel}
-      </InputLabel>
-      <Input
-        placeholder={texts.emailPlaceholder}
-        type="email"
-        name="email"
-        id="email"
-        className="w-full text-sm sm:text-base lg:text-lg text-black"
-        required
-        error={(result?.errors?.fieldErrors.email?.length || 0) > 0}
-      />
-      <ErrorMessage className="text-xs sm:text-sm lg:text-base">
-        {result?.errors?.fieldErrors.email?.[0]}
-      </ErrorMessage>
-    </div>
-
-    <div className="space-y-2">
-      <InputLabel htmlFor="message" className="text-sm sm:text-base lg:text-lg">
-        {texts.messageLabel}
-      </InputLabel>
-      <textarea
-        className={cn(
-          "color text-black shadow-lg border border-black-blue h-32 sm:h-40 py-2 text-sm sm:text-base lg:text-lg px-4 rounded-lg w-full",
-          (result?.errors?.fieldErrors.message?.length || 0) > 0 &&
-          "border-error"
-        )}
-        placeholder={texts.messagePlaceholder}
-        name="message"
-        id="message"
-        required
-      />
-      <ErrorMessage className="text-xs sm:text-sm lg:text-base">
-        {result?.errors?.fieldErrors.message?.[0]}
-      </ErrorMessage>
-    </div>
-
-    <Button
-      className="w-full md:w-fit self-center border-light-blue text-sm sm:text-base lg:text-lg"
-      type="submit"
-      disabled={isPending}
+  <div className="flex justify-center items-center w-full px-4 sm:px-8 lg:px-16">
+    <form
+      onSubmit={handleSubmit}
+      action="https://formsubmit.co/eusouanderson459@gmail.com"
+      method="POST"
+      className="flex flex-col gap-6 mt-8 p-4 sm:p-6 lg:p-8 rounded-lg shadow-lg max-w-lg w-full sm:max-w-xl lg:max-w-2xl"
     >
-      <span>{texts.sendButton}</span>
-    </Button>
+      <div className="space-y-2">
+        <InputLabel htmlFor="name" className="text-sm sm:text-base lg:text-lg">
+          {texts.nameLabel}
+        </InputLabel>
+        <Input
+          placeholder={texts.namePlaceholder}
+          name="name"
+          id="name"
+          className="w-full text-sm sm:text-base lg:text-lg"
+          required
+          error={(result?.errors?.fieldErrors.name?.length || 0) > 0}
+        />
+        {result?.errors?.fieldErrors.name?.[0] && (
+          <span className="text-xs sm:text-sm lg:text-base text-red-500">
+            <ErrorMessage>{result.errors.fieldErrors.name[0]}</ErrorMessage>
+          </span>
+        )}
+      </div>
 
-    <input type="hidden" name="_next" value="https://www.eusouanderson.me" />
-    <input type="hidden" name="_captcha" value="false" />
-  </form>
-</div>
+      <div className="space-y-2">
+        <InputLabel htmlFor="email" className="text-sm sm:text-base lg:text-lg">
+          {texts.emailLabel}
+        </InputLabel>
+        <Input
+          placeholder={texts.emailPlaceholder}
+          type="email"
+          name="email"
+          id="email"
+          className="w-full text-sm sm:text-base lg:text-lg text-black"
+          required
+          error={(result?.errors?.fieldErrors.email?.length || 0) > 0}
+        />
+        {result?.errors?.fieldErrors.email?.[0] && (
+          <span className="text-xs sm:text-sm lg:text-base text-red-500">
+            <ErrorMessage>{result.errors.fieldErrors.email[0]}</ErrorMessage>
+          </span>
+        )}
+      </div>
 
+      <div className="space-y-2">
+        <InputLabel htmlFor="message" className="text-sm sm:text-base lg:text-lg">
+          {texts.messageLabel}
+        </InputLabel>
+        <textarea
+          className={cn(
+            "color text-black shadow-lg border border-black-blue h-32 sm:h-40 py-2 text-sm sm:text-base lg:text-lg px-4 rounded-lg w-full",
+            (result?.errors?.fieldErrors.message?.length || 0) > 0 && "border-error"
+          )}
+          placeholder={texts.messagePlaceholder}
+          name="message"
+          id="message"
+          required
+        />
+        {result?.errors?.fieldErrors.message?.[0] && (
+          <span className="text-xs sm:text-sm lg:text-base text-red-500">
+            <ErrorMessage>{result.errors.fieldErrors.message[0]}</ErrorMessage>
+          </span>
+        )}
+      </div>
+
+      <Button
+        className="w-full md:w-fit self-center border-light-blue text-sm sm:text-base lg:text-lg"
+        type="submit"
+        disabled={isPending}
+      >
+        <span>{texts.sendButton}</span>
+      </Button>
+
+      <input type="hidden" name="_next" value="https://www.eusouanderson.me" />
+      <input type="hidden" name="_captcha" value="false" />
+    </form>
+  </div>
   );
 };
