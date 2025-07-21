@@ -1,7 +1,7 @@
 import { img_langbr, img_langen } from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
-import { GiBrazilFlag } from "react-icons/gi";
+
 
 export const LanguageSwitch = () => {
   return (

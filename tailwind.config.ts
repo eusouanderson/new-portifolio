@@ -1,20 +1,19 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/styles/custom-animation.css",
-    "./src/styles/stroke-animation.css",
+    "./src/styles/**/*.css",
   ],
   theme: {
     extend: {
       colors: {
-        "light-blue": "#800080", // Roxo
-        "primary": "#6a0dad", // Roxo escuro
-        "secondary": "#4b0082", // Índigo (tom de roxo)
-        "accent": "#daa520", // Dourado mais suave
+        "light-blue": "#7F00FF",   
+        "primary": "#6E00FF",      
+        "secondary": "#1A1AFF",    
+        "accent": "#00FFD1",       
       },
       backgroundImage: {
         "background-home": "url('/assets/images/bg.png')",

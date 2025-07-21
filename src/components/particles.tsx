@@ -19,49 +19,43 @@ export const ParticlesBG = () => {
   return (
     <Particles
       id="tsparticles-bg"
-      className="-z-10"
-      particlesLoaded={particlesLoaded}
+      className="-z-10 fixed inset-0"
       options={{
+        fullScreen: { enable: false },
         background: {
           color: {
-            value: "#0000ff", 
+            value: "#0d0d0d", // fundo escuro e moderno
           },
         },
         fpsLimit: 60,
         interactivity: {
           events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
             onHover: {
               enable: true,
               mode: "repulse",
             },
-            resize: {
-              enable: true,
-            },
+            
           },
           modes: {
-            push: {
-              quantity: 5,
-            },
             repulse: {
-              distance: 50,
-              duration: 0.8,
+              distance: 100,
+              duration: 0.4,
             },
           },
         },
         particles: {
           color: {
-            value: "#ffffff", 
+            value: "#9D00FF", // roxo tecnológico
           },
           links: {
-            color: "#ffffff",
-            distance: 156.8,
+            color: "#00ffff", // cyan neon
+            distance: 150,
             enable: true,
-            opacity: 0.8,
+            opacity: 0.3,
             width: 1,
+          },
+          collisions: {
+            enable: false,
           },
           move: {
             direction: "none",
@@ -70,28 +64,27 @@ export const ParticlesBG = () => {
               default: "bounce",
             },
             random: false,
-            speed: 2, 
+            speed: 1.2,
             straight: false,
           },
           number: {
             density: {
-              enable: false,
-              //area: 800,
+              enable: true,
             },
-            value: 50,
+            value: 60,
           },
           opacity: {
-            value: 1, 
+            value: 10,
           },
           shape: {
-            type: "slim",
+            type: "circle",
           },
           size: {
-            value: { min: 1, max: 16 }, 
+            value: { min: 1, max: 33 },
           },
         },
         detectRetina: true,
       }}
     />
   );
-};
+}

@@ -1,9 +1,9 @@
-// src/app/page.tsx
-"use client"; // Adicione esta linha para tornar o componente um Componente de Cliente
+
+"use client";
 
 import { useState } from "react";
 import { MainPage } from "@/components/main-page";
-import Planos from "@/components/Planos"; // Corrija a importação aqui
+import Planos from "@/components/Planos"; 
 import { texts } from "@/config/constants";
 
 export default function Home() {
