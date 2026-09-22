@@ -1,19 +1,18 @@
 "use client";
 
-import { texts } from "@/config/constants";
 import { AiEcosystemTexts, AiSolutionItem } from "@/types/texts";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-    TbBrain,
-    TbBrandGithubFilled,
-    TbBrandVscode,
-    TbCpu,
-    TbExternalLink,
-    TbTestPipe,
-    TbX,
+  TbBrain,
+  TbBrandGithubFilled,
+  TbBrandVscode,
+  TbCpu,
+  TbExternalLink,
+  TbTestPipe,
+  TbX,
 } from "react-icons/tb";
 import { Tilt } from "react-tilt";
 import type { Swiper as SwiperCore } from "swiper";
@@ -71,7 +70,7 @@ const SolutionCard = ({
           </div>
 
           {solution.github && (
-            <div className="text-white/40 group-hover:text-white transition-colors p-1.5 rounded-lg bg-white/5">
+            <div className="text-white/60 group-hover:text-white transition-colors p-1.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-white/20">
               <TbBrandGithubFilled className="text-lg" />
             </div>
           )}

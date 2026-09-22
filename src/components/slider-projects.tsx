@@ -1,12 +1,12 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Tilt } from "react-tilt";
-import "swiper/css";
 import { Project } from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { Tilt } from "react-tilt";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 
 interface Props {
@@ -54,16 +54,15 @@ export function SliderProjects({ projects }: Props) {
                   alt={project.title}
                   className="w-80 h-60 object-cover rounded-md"
                 />
-                <div className="flex gap-4  absolute top-2 right-2 scale-95 transition-all hover:scale-100 hover:brightness-110">
+                <div className="flex gap-4 absolute top-2 right-2 scale-95 transition-all hover:scale-100">
                   <Link
                     href={project.github}
-                    className="text-white"
+                    className="flex items-center justify-center w-9 h-9 rounded-full bg-[#121217]/80 backdrop-blur-md border border-white/15 text-white/80 hover:text-white hover:border-white/40 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] transition-all duration-300"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Repository"
                   >
-                    <FaGithub
-                      size={40}
-                      className="bg-dark-gray p-1.5 rounded-full"
-                    />
+                    <FaGithub size={18} />
                   </Link>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import { ContactTexts } from "@/types/texts";
 import { ContactForm } from "../contact-form/contact-form";
-import WhatsAppButton from "../whats/whatsapp";
 
 interface Props {
   texts: ContactTexts;
@@ -10,7 +9,7 @@ export const Contact = ({ texts }: Props) => {
   return (
     <section
       id="contact-me"
-      className="grid  gap-auto md:gap-auto py-auto px-auto md:px-auto text-white h-auto md:h-dvh justify-center items-center max-lg:grid-cols-1 [&>*]:z-10"
+      className="grid gap-auto md:gap-auto py-auto px-auto md:px-auto text-white h-auto md:h-dvh justify-center items-center max-lg:grid-cols-1 [&>*]:z-10"
     >
       <div className="flex flex-col items-center md:items-start text-center md:text-left">
         <div className="hidden md:flex flex-col items-center mb-auto">
@@ -20,15 +19,6 @@ export const Contact = ({ texts }: Props) => {
         <div className="w-full max-w-lg">
           <h2 className="text-2xl md:text-4xl font-bold text-center">{texts.title}</h2>
           <ContactForm texts={texts} />
-        </div>
-      </div>
-      
-      <div className="flex justify-center items-center">
-        <div className="hidden md:block">
-          <WhatsAppButton
-            phoneNumber="5511983523869" 
-            message="Olá! Gostaria de saber mais sobre seus projetos."
-          />
         </div>
       </div>
     </section>

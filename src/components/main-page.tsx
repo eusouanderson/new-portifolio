@@ -1,11 +1,13 @@
+"use client";
+
 import { Navbar } from "@/components/navbar";
 import {
-    AboutMe,
-    AiEcosystem,
-    Hero,
-    Tecnologies,
+  AboutMe,
+  AiEcosystem,
+  Hero,
+  Tecnologies,
 } from "@/components/sections";
-import { texts as textBases } from "@/config/constants";
+import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { Texts } from "@/types/texts";
 import { Suspense } from "react";
@@ -14,12 +16,16 @@ import { ParticlesBG } from "./particles";
 import ProjectList from "./project-list/ProjectList";
 import { Contact } from "./sections/contact";
 import { Experiences } from "./sections/experiences";
+import WhatsAppButton from "./whats/whatsapp";
 
 interface Props {
   texts?: Texts;
+  initialLanguage?: string;
 }
 
-export const MainPage = ({ texts = textBases["pt-br"] }: Props) => {
+const MainPageInner = () => {
+  const { texts } = useLanguage();
+
   return (
     <main
       className={cn(
@@ -37,7 +43,22 @@ export const MainPage = ({ texts = textBases["pt-br"] }: Props) => {
       <AiEcosystem texts={texts.aiEcosystem} />
       <ProjectList />
       <Contact texts={texts.contact} />
-      <LanguageSwitch />
+
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 select-none">
+        <WhatsAppButton
+          phoneNumber="5511983523869"
+          message="Olá! Gostaria de saber mais sobre seus projetos."
+        />
+        <LanguageSwitch />
+      </div>
     </main>
+  );
+};
+
+export const MainPage = ({ initialLanguage = "pt-br" }: Props) => {
+  return (
+    <LanguageProvider initialLanguage={initialLanguage}>
+      <MainPageInner />
+    </LanguageProvider>
   );
 };

@@ -1,15 +1,14 @@
 "use client";
+import { motionVar } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 import "@/styles/custom-animation.css";
 import { HeroTexts } from "@/types/texts";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { downloadFile } from "@/utils/downloadFile";
-import { Button } from "../ui/button";
-import { motionVar } from "@/lib/motion";
-import { ShinyButton } from "../shiny-button";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
-import Link from "next/link";
+import { Button } from "../ui/button";
 
 interface Props {
   texts: HeroTexts;
@@ -80,33 +79,27 @@ export const Hero = ({ texts }: Props) => {
             </Button>
             <Link
               href="https://www.linkedin.com/in/anderson-rodrigues-24003823b/"
-              target="__blank"
-              className="rounded-full md:ml-2 bg-light-white"
-              rel="external"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Linkedin"
+              data-tooltip-place="bottom"
+              className="group relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#121217]/80 backdrop-blur-xl border border-white/10 text-[#0A66C2] hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/15 hover:shadow-[0_0_20px_rgba(10,102,194,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 md:ml-2"
+              aria-label="Linkedin"
             >
-              <ShinyButton
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content="Linkedin"
-                data-tooltip-place="bottom"
-                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full linkedin-icon"
-              >
-                <FaLinkedinIn />
-              </ShinyButton>
+              <FaLinkedinIn className="text-xl md:text-2xl transition-transform duration-300 group-hover:scale-110" />
             </Link>
             <Link
               href="https://github.com/eusouanderson"
-              target="__blank"
-              className="rounded-full md:ml-2 bg-light-white hover:bg-light-white"
-              rel="external"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Github"
+              data-tooltip-place="bottom"
+              className="group relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#121217]/80 backdrop-blur-xl border border-white/10 text-white/90 hover:text-white hover:border-white/40 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 md:ml-2"
+              aria-label="Github"
             >
-              <ShinyButton
-                className="h-10 w-10 md:h-12 md:w-12 text-2xl rounded-full github-icon"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content="Github"
-                data-tooltip-place="bottom"
-              >
-                <TbBrandGithubFilled />
-              </ShinyButton>
+              <TbBrandGithubFilled className="text-xl md:text-2xl transition-transform duration-300 group-hover:scale-110" />
             </Link>
           </div>
         </div>
