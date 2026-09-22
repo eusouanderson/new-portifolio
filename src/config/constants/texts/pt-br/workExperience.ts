@@ -5,33 +5,14 @@ export const workExperience: WorkExperienceTexts = {
   title: "Experiência Profissional",
   experiences: [
     {
-      name: "Desenvolvedor de Software",
-      companyName: "Comerc Energia",
+      name: "Estagiário em Desenvolvimento Backend",
+      companyName: "App Data",
       description:
-        "Atuação como desenvolvedor na Comerc Energia, desenvolvendo aplicações web modernas e escaláveis com foco em Vue 3, Composition API e TypeScript. Responsável pelo desenvolvimento de interfaces ricas, integração contínua e cobertura abrangente de testes automatizados com Vitest e Jest.",
-      from: "2023-11-01",
-      tags: [tags["Vue 3"], tags["TypeScript"], tags["Vitest"], tags["Jest"], tags["Web Development"]],
-      iconName: "Vue.js",
-    },
-    {
-      name: "Engenheiro de Software",
-      companyName: "Agência Close",
-      description:
-        "Na Agência Close, fui responsável pelo desenvolvimento do backend e das APIs para nossos softwares, utilizando Electron e Vue.js. Atuei na arquitetura e implementação de soluções escaláveis e eficientes, assegurando a integração perfeita entre frontend e backend.",
-      from: "2023-09-01",
-      to: "2023-10-31",
-      tags: [tags["FastAPI"], tags["Vue.js"], tags["Backend Development"], tags["Render"]],
-      iconName: "Vite",
-    },
-    {
-      name: "Engenheiro de Software",
-      companyName: "Houg · Autônomo",
-      description:
-        "Atuei como Engenheiro de Software na Houg desenvolvendo sistemas web abrangentes, incluindo a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados com MongoDB, priorizando performance e segurança.",
-      from: "2024-04-01",
-      to: "2024-08-01",
-      tags: [tags["MongoDB"], tags["API"], tags["Web Development"], tags["React.js"]],
-      iconName: "React.js",
+        "Durante meu estágio em Desenvolvimento Backend na App Data, atuei na construção de APIs RESTful e integração com Node.js, Express e MongoDB.",
+      from: "2009-07-05",
+      to: "2014-12-01",
+      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
+      iconName: "Python",
     },
     {
       name: "Desenvolvedor Fullstack",
@@ -54,14 +35,33 @@ export const workExperience: WorkExperienceTexts = {
       iconName: "Node.js",
     },
     {
-      name: "Estagiário em Desenvolvimento Backend",
-      companyName: "App Data",
+      name: "Engenheiro de Software",
+      companyName: "Agência Close",
       description:
-        "Durante meu estágio em Desenvolvimento Backend na App Data, atuei na construção de APIs RESTful e integração com Node.js, Express e MongoDB.",
-      from: "2009-07-05",
-      to: "2014-12-01",
-      tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
-      iconName: "Python",
+        "Na Agência Close, fui responsável pelo desenvolvimento do backend e das APIs para nossos softwares, utilizando Electron e Vue.js. Atuei na arquitetura e implementação de soluções escaláveis e eficientes, assegurando a integração perfeita entre frontend e backend.",
+      from: "2023-09-01",
+      to: "2023-10-31",
+      tags: [tags["FastAPI"], tags["Vue.js"], tags["Backend Development"], tags["Render"]],
+      iconName: "Vite",
+    },
+    {
+      name: "Engenheiro de Software",
+      companyName: "Houg · Autônomo",
+      description:
+        "Atuei como Engenheiro de Software na Houg desenvolvendo sistemas web abrangentes, incluindo a criação e manutenção de sites dinâmicos, APIs robustas e bancos de dados com MongoDB, priorizando performance e segurança.",
+      from: "2024-04-01",
+      to: "2024-08-01",
+      tags: [tags["MongoDB"], tags["API"], tags["Web Development"], tags["React.js"]],
+      iconName: "React.js",
+    },
+    {
+      name: "Desenvolvedor",
+      companyName: "Comerc Energia",
+      description:
+        "Atuação como desenvolvedor na Comerc Energia, desenvolvendo aplicações web modernas e escaláveis com foco em Vue 3, Composition API e TypeScript. Responsável pelo desenvolvimento de interfaces ricas, integração contínua e cobertura abrangente de testes automatizados com Vitest e Jest.",
+      from: "2025-10-01",
+      tags: [tags["Vue 3"], tags["TypeScript"], tags["Vitest"], tags["Jest"], tags["Web Development"]],
+      iconName: "Vue.js",
     },
   ],
 };
