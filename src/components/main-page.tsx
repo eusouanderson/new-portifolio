@@ -1,14 +1,19 @@
 import { Navbar } from "@/components/navbar";
-import { AboutMe, Hero, Projects, Tecnologies } from "@/components/sections";
+import {
+    AboutMe,
+    AiEcosystem,
+    Hero,
+    Tecnologies,
+} from "@/components/sections";
+import { texts as textBases } from "@/config/constants";
 import { cn } from "@/lib/utils";
 import { Texts } from "@/types/texts";
-import { texts as textBases } from "@/config/constants";
-import { ParticlesBG } from "./particles";
-import { Experiences } from "./sections/experiences";
+import { Suspense } from "react";
 import { LanguageSwitch } from "./language-switch";
+import { ParticlesBG } from "./particles";
+import ProjectList from "./project-list/ProjectList";
 import { Contact } from "./sections/contact";
-import React, { Suspense, lazy } from 'react';
-import  ProjectList  from "./project-list/ProjectList";
+import { Experiences } from "./sections/experiences";
 
 interface Props {
   texts?: Texts;
@@ -29,12 +34,10 @@ export const MainPage = ({ texts = textBases["pt-br"] }: Props) => {
       <Hero texts={texts.hero} />
       <Experiences texts={texts.workExperience} />
       <Tecnologies techTexts={texts.technologies} />
-      
+      <AiEcosystem texts={texts.aiEcosystem} />
       <ProjectList />
       <Contact texts={texts.contact} />
-      
       <LanguageSwitch />
-      
     </main>
   );
 };

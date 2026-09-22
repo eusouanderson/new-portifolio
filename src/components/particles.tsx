@@ -1,20 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useEffect } from "react";
 
 export const ParticlesBG = () => {
-
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     });
   }, []);
-
-  const particlesLoaded = async (container?: any) => {
-    console.log(container);
-  };
 
   return (
     <Particles
@@ -24,7 +19,7 @@ export const ParticlesBG = () => {
         fullScreen: { enable: false },
         background: {
           color: {
-            value: "#0d0d0d", // fundo escuro e moderno
+            value: "#0d0d0d",
           },
         },
         fpsLimit: 60,
@@ -32,26 +27,27 @@ export const ParticlesBG = () => {
           events: {
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: "grab",
             },
-            
           },
           modes: {
-            repulse: {
-              distance: 100,
-              duration: 0.4,
+            grab: {
+              distance: 140,
+              links: {
+                opacity: 0.35,
+              },
             },
           },
         },
         particles: {
           color: {
-            value: "#9D00FF", // roxo tecnológico
+            value: ["#6E00FF", "#00FFD1", "#7F00FF"],
           },
           links: {
-            color: "#00ffff", // cyan neon
-            distance: 150,
+            color: "#6E00FF",
+            distance: 120,
             enable: true,
-            opacity: 0.3,
+            opacity: 0.18,
             width: 1,
           },
           collisions: {
@@ -61,30 +57,35 @@ export const ParticlesBG = () => {
             direction: "none",
             enable: true,
             outModes: {
-              default: "bounce",
+              default: "out",
             },
-            random: false,
-            speed: 1.2,
+            random: true,
+            speed: 0.8,
             straight: false,
           },
           number: {
             density: {
               enable: true,
             },
-            value: 60,
+            value: 75,
           },
           opacity: {
-            value: 10,
+            value: { min: 0.2, max: 0.6 },
+            animation: {
+              enable: true,
+              speed: 0.6,
+              sync: false,
+            },
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 1, max: 33 },
+            value: { min: 1, max: 3 },
           },
         },
         detectRetina: true,
       }}
     />
   );
-}
+};

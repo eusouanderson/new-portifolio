@@ -1,10 +1,18 @@
-import { IconType } from "react-icons";
 import { Tag } from "./tag";
 
-
-export type IconProject = "React.js" | "Vite" | "Next.js" | "Node.js" | ".NET" | "Java" | "HTML5" | "CSS3" | "JavaScript" | "Python";
-
-
+export type IconProject =
+  | "React.js"
+  | "Vite"
+  | "Next.js"
+  | "Node.js"
+  | ".NET"
+  | "Java"
+  | "HTML5"
+  | "CSS3"
+  | "JavaScript"
+  | "Python"
+  | "Vue.js"
+  | "TypeScript";
 
 export interface Experience {
   name: string;

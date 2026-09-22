@@ -2,8 +2,8 @@ import { AboutMeTexts } from "@/types/texts";
 
 export const aboutme: AboutMeTexts = {
   title: "Olá, meu nome é",
-  subtitle: "Desenvolvedor Fullstack",
-  role: "Desenvolvedor Fullstack com especialização em Next.js, React.js, Python, APIs Web, TypeScript e .NET",
+  subtitle: "Engenheiro de Software & Expert em IA",
+  role: "Graduado em ADS · Pós-graduando em Engenharia de Software · Expert em IA (MCP, RAG), TypeScript, Vue 3 e Testes Automatizados",
   description:
-    "Com mais de 15 anos de experiência em desenvolvimento de software, sou um desenvolvedor Fullstack proficiente em várias linguagens de programação, incluindo C, C#, Python, Java e JavaScript. Tenho ampla experiência na criação de aplicações web modernas e escaláveis, utilizando tecnologias como Next.js, Node.js e .NET. Minha experiência abrangente me permite enfrentar desafios complexos com um conjunto de habilidades diversificado e uma paixão por criar soluções de software eficientes e de alta qualidade.",
+    "Graduado em Análise e Desenvolvimento de Sistemas (ADS) e atualmente cursando pós-graduação em Engenharia de Software. Com sólida trajetória na área, sou expert em TypeScript e soluções avançadas com Inteligência Artificial, abrangendo servidores MCP (Model Context Protocol), arquiteturas RAG e fluxos agênticos. Domino o desenvolvimento frontend moderno com Vue 3 (Composition API, Pinia) e React/Next.js, aliado à construção de APIs de alto rendimento com Express, Hono e Node.js. Aplico rigor absoluto em qualidade de código, padrões SOLID e testes automatizados (Vitest, Jest) garantindo alta cobertura, resiliência e escalabilidade.",
 };

@@ -1,48 +1,64 @@
 import { Tecnology } from "@/types/tecnologies";
-import { AiOutlineDotNet } from "react-icons/ai";
-import { FaCss3Alt, FaHtml5, FaJava, FaNode, FaPython, FaReact } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io";
-import { SiNextdotjs, SiVite } from "react-icons/si";
+import { FaNode, FaPython, FaReact } from "react-icons/fa";
+import { RiBrainLine } from "react-icons/ri";
+import {
+  SiExpress,
+  SiHono,
+  SiJest,
+  SiNextdotjs,
+  SiTypescript,
+  SiVitest,
+  SiVuedotjs,
+} from "react-icons/si";
+import { TbRobot } from "react-icons/tb";
 
 export const tecnologies: Tecnology[] = [
   {
-    name: "React",
-    icon: FaReact,
+    name: "TypeScript",
+    icon: SiTypescript,
   },
   {
-    name: "Vite",
-    icon: SiVite,
+    name: "IA & RAG",
+    icon: RiBrainLine,
+  },
+  {
+    name: "MCP",
+    icon: TbRobot,
+  },
+  {
+    name: "Vue 3",
+    icon: SiVuedotjs,
+  },
+  {
+    name: "React",
+    icon: FaReact,
   },
   {
     name: "Next.js",
     icon: SiNextdotjs,
   },
   {
+    name: "Hono",
+    icon: SiHono,
+  },
+  {
+    name: "Express",
+    icon: SiExpress,
+  },
+  {
     name: "Node.js",
     icon: FaNode,
   },
   {
-    name: ".NET",
-    icon: AiOutlineDotNet,
+    name: "Vitest",
+    icon: SiVitest,
   },
   {
-    name: "Java",
-    icon: FaJava,
-  },
-  {
-    name: "HTML5",
-    icon: FaHtml5,
-  },
-  {
-    name: "CSS3",
-    icon: FaCss3Alt
-  },
-  {
-    name: "JavaScript",
-    icon: IoLogoJavascript 
+    name: "Jest",
+    icon: SiJest,
   },
   {
     name: "Python",
-    icon: FaPython
-  }
+    icon: FaPython,
+  },
 ];

@@ -2,19 +2,24 @@ import { TechnologiesTexts } from "@/types/texts";
 
 export const technologies: TechnologiesTexts = {
   title: "Technologies",
-  description: `I am an expert in a wide range of technologies that allow me to develop robust and efficient web applications. On the frontend, I use React and Vite to create fast and interactive user interfaces, while Next.js facilitates server-side rendering and static site generation.
+  description: `With TypeScript as my primary language, I design and build intelligent systems integrating Generative AI, MCP servers, and RAG architectures with agentic workflows.
 
-For backend development, my foundation includes Node.js and .NET, ensuring scalable APIs and reliable services. Additionally, I leverage Python, C#, and C to tackle complex problems and build diverse solutions, enhancing both frontend and backend capabilities.`,
+On the frontend, I master Vue and React with Next.js to craft fast, reactive, and elegant interfaces. On the backend, I engineer modern and ultra-fast APIs and microservices using Hono and Express with Node.js.
+
+I ensure software reliability and robustness through a solid automated testing mindset with Vitest and Jest, upholding high test coverage standards, clean architecture, and SOLID principles.`,
   highlights: [
-    "Frontend",
+    "TypeScript",
+    "AI",
+    "MCP",
+    "RAG",
+    "Vue",
     "React",
-    "Vite",
     "Next.js",
-    "Backend",
+    "Hono",
+    "Express",
     "Node.js",
-    ".NET",
-    "Python",
-    "C#",
-    "C",
+    "Vitest",
+    "Jest",
+    "SOLID",
   ],
 };

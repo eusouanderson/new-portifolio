@@ -1,11 +1,12 @@
 import { Texts } from "@/types/texts";
-import { hero } from "./hero";
 import { aboutme as aboutMe } from "./aboutme";
+import { aiEcosystem } from "./aiEcosystem";
+import { contact } from "./contact";
+import { hero } from "./hero";
 import { navbar } from "./navbar";
 import { projects } from "./projects";
 import { technologies } from "./technologies";
 import { workExperience } from "./workExperience";
-import { contact } from "./contact";
 
 export const ptBr: Texts = {
   hero,
@@ -13,6 +14,7 @@ export const ptBr: Texts = {
   navbar,
   projects,
   technologies,
+  aiEcosystem,
   workExperience,
   contact,
 };

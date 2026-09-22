@@ -1,12 +1,12 @@
 "use client";
-import Link from "next/link";
-import { Logo } from "./logo";
-import { NavbarTexts } from "@/types/texts";
-import { Button } from "./ui/button";
-import { useState } from "react";
-import Hamburger from "hamburger-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { NavbarTexts } from "@/types/texts";
+import { AnimatePresence, motion } from "framer-motion";
+import Hamburger from "hamburger-react";
+import Link from "next/link";
+import { useState } from "react";
+import { Logo } from "./logo";
+import { Button } from "./ui/button";
 
 interface Props {
   text: NavbarTexts;
@@ -15,14 +15,13 @@ interface Props {
 export const Navbar = ({ text }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Função para fechar o menu
   const closeMenu = () => setIsOpen(false);
 
   return (
     <nav
       className={cn(
         "fixed left-0 right-0 z-20 px-8",
-        isOpen && "bg-black" // Aplica a classe de fundo preto quando o menu está aberto
+        isOpen && "bg-black"
       )}
     >
       <div className="flex items-center justify-between py-4">
@@ -41,6 +40,11 @@ export const Navbar = ({ text }: Props) => {
             <li>
               <Link href="#tech" className="stroke-button py-1">{text.tech}</Link>
             </li>
+            {text.ai && (
+              <li>
+                <Link href="#ai-ecosystem" className="stroke-button py-1">{text.ai}</Link>
+              </li>
+            )}
             <li>
               <Link href="#projects" className="stroke-button py-1">{text.projects}</Link>
             </li>
@@ -91,6 +95,13 @@ export const Navbar = ({ text }: Props) => {
                   {text.tech}
                 </Link>
               </li>
+              {text.ai && (
+                <li>
+                  <Link href="#ai-ecosystem" onClick={closeMenu}>
+                    {text.ai}
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link href="#projects" onClick={closeMenu}>
                   {text.projects}

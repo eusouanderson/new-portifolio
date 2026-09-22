@@ -2,19 +2,24 @@ import { TechnologiesTexts } from "@/types/texts";
 
 export const technologies: TechnologiesTexts = {
   title: "Tecnologias",
-  description: `Como especialista em desenvolvimento web, utilizo uma ampla gama de tecnologias para criar aplicações robustas e eficientes. No frontend, emprego ferramentas como React e Vite para desenvolver interfaces de usuário rápidas e interativas. Next.js complementa esse trabalho ao fornecer renderização do lado do servidor e geração de sites estáticos de alto desempenho.
+  description: `Com TypeScript como minha linguagem principal, projeto e desenvolvo sistemas inteligentes integrando IA generativa, servidores MCP e arquiteturas RAG com fluxos agênticos.
 
-No backend, minha base é formada por Node.js e .NET, oferecendo APIs escaláveis e serviços backend confiáveis. Além disso, trabalho com Python, C#, e C para resolver problemas complexos e desenvolver soluções variadas. Minha experiência abrange tanto o desenvolvimento de interfaces modernas quanto a construção de sistemas de backend eficientes, garantindo soluções completas e bem integradas.`,
+No frontend, domino Vue e React com Next.js para criar interfaces velozes, reativas e elegantes. No backend, desenvolvo APIs e microsserviços modernos e ultrarrápidos utilizando Hono e Express com Node.js.
+
+Garanto a confiabilidade e robustez do software por meio de uma cultura sólida de testes automatizados com Vitest e Jest, mantendo padrões elevados de cobertura de código, arquitetura limpa e princípios SOLID.`,
   highlights: [
-    "Frontend",
+    "TypeScript",
+    "IA",
+    "MCP",
+    "RAG",
+    "Vue",
     "React",
-    "Vite",
     "Next.js",
-    "Backend",
+    "Hono",
+    "Express",
     "Node.js",
-    ".NET",
-    "Python",
-    "C#",
-    "C",
+    "Vitest",
+    "Jest",
+    "SOLID",
   ],
 };

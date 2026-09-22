@@ -1,10 +1,11 @@
 import { NavbarTexts } from "@/types/texts";
 
 export const navbar: NavbarTexts = {
-  aboutMe: "Curriculo",
+  aboutMe: "Sobre",
   contact: "Contato",
   home: "Início",
   workExp: "Experiência",
   tech: "Tecnologias",
-  projects: "Repositorios",
-}
+  ai: "IA & MCP",
+  projects: "Projetos",
+};

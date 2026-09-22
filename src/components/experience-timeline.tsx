@@ -1,15 +1,15 @@
 "use client";
+import { countYears, formatDate } from "@/lib/date";
 import { Experience, IconProject } from "@/types/experience";
+import { AiOutlineDotNet } from "react-icons/ai";
+import { FaCss3Alt, FaHtml5, FaJava, FaNode, FaPython, FaReact } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io";
+import { SiNextdotjs, SiTypescript, SiVite, SiVuedotjs } from "react-icons/si";
 import {
-  VerticalTimeline,
-  VerticalTimelineElement,
+    VerticalTimeline,
+    VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { FaReact, FaCss3Alt, FaHtml5, FaJava, FaNode, FaPython } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io";
-import { SiNextdotjs, SiVite } from "react-icons/si";
-import { AiOutlineDotNet } from "react-icons/ai";
-import { countYears, formatDate } from "@/lib/date";
 
 const iconMap: { [key in IconProject]?: JSX.Element } = {
   "React.js": <FaReact />,
@@ -22,6 +22,8 @@ const iconMap: { [key in IconProject]?: JSX.Element } = {
   "CSS3": <FaCss3Alt />,
   "JavaScript": <IoLogoJavascript />,
   "Python": <FaPython />,
+  "Vue.js": <SiVuedotjs />,
+  "TypeScript": <SiTypescript />,
 };
 
 export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] }) => {
@@ -53,17 +55,16 @@ export const ExperienceTimeline = ({ experiences }: { experiences: Experience[] 
             <h4 className="text-xs md:text-sm vertical-timeline-element-subtitle text-light-blue">
               {experience.companyName}
             </h4>
-            {/* <p>{experience.description}</p> */}
             <div className="flex flex-wrap gap-2">
-              {experience.tags.map((tag, tagIndex) => ( // Adicionando tagIndex como segundo parâmetro
+              {experience.tags.map((tag, tagIndex) => (
                 <span
-                  key={tag?.name || `tag-${tagIndex}`} // Usa `tagIndex` corretamente
+                  key={tag?.name || `tag-${tagIndex}`}
                   style={{
-                    color: tag?.color || '#ffffff', // Verifica se tag e tag.color estão definidos
+                    color: tag?.color || '#ffffff',
                   }}
                   className={`text-sm md:text-base`}
                 >
-                  #{tag?.name || 'Unknown'} {/* Exibe 'Unknown' se o nome não estiver definido */}
+                  #{tag?.name || 'Unknown'}
                 </span>
               ))}
             </div>

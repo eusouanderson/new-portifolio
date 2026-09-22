@@ -5,13 +5,13 @@ export const hero: HeroTexts = {
   cvButton: "Download CV",
   title: [
     {
-      content: "Developer",
+      content: "Expert in",
     },
     {
-      content: "Fullstack",
+      content: "TypeScript & AI",
       emphasis: true,
     },
   ],
   subtitle:
-    "Specialist in Python, with strong experience in creating web APIs with FastAPI, and proficiency in Next.js, Node.js, Vue.js, and .NET for developing modern, high-performance web applications.",
+    "Expert in TypeScript, Artificial Intelligence (MCP, RAG, and Autonomous Agents), and modern web ecosystems. Extensive experience with Vue 3, React, Next.js, high-performance APIs using Express and Hono, and high-coverage automated testing.",
 };
