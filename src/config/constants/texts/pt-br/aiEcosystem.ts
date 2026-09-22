@@ -26,7 +26,7 @@ export const aiEcosystem: AiEcosystemTexts = {
     {
       id: "mcp-servers-suite",
       title: "Suíte Corporativa de Servidores MCP",
-      badge: "@dmc/engine-mcp-server",
+      badge: "@mcp-server",
       description:
         "Conjunto de mais de 15 servidores MCP que oferecem visibilidade estrita de arquitetura, controllers, DTOs, stores e componentes para agentes autônomos de IA.",
       features: [
