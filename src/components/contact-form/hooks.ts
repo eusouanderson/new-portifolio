@@ -40,9 +40,14 @@ export const useContactForm = () => {
     }
   };
 
+  const resetForm = () => {
+    setIsSuccess(false);
+  };
+
   return {
     isPending,
     isSuccess,
     handleSubmit,
+    resetForm,
   };
 };

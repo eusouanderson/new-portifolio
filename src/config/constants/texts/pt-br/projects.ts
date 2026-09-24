@@ -1,16 +1,23 @@
+import {
+    img_biblioteca,
+    img_crud,
+    img_ecommerce,
+    img_instagram,
+    img_minesweeper,
+    img_windows,
+} from "@/assets/images/projects";
 import { ProjectsTexts } from "@/types/texts";
 import { tags } from "../../tags";
-import {
-  img_biblioteca,
-  img_crud,
-  img_ecommerce,
-  img_instagram,
-  img_minesweeper,
-  img_windows,
-} from "@/assets/images/projects";
 
 export const projects: ProjectsTexts = {
-  title: "Projetos",
+  title: "Projetos em Destaque",
+  subtitle: "Portfólio & Aplicações",
+  description: "Aplicações modernas e sistemas interativos desenvolvidos com foco em alta performance, arquitetura escalável e TypeScript.",
+  featuredTab: "Destaques",
+  githubTab: "Repositórios GitHub",
+  viewDetails: "Ver Detalhes",
+  viewRepo: "Ver Repositório",
+  searchPlaceholder: "Buscar repositório...",
   projects: [
     {
       title: "E-commerce de livros",

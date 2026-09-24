@@ -2,10 +2,11 @@
 
 import { Navbar } from "@/components/navbar";
 import {
-  AboutMe,
-  AiEcosystem,
-  Hero,
-  Tecnologies,
+    AboutMe,
+    AiEcosystem,
+    Hero,
+    Projects,
+    Tecnologies,
 } from "@/components/sections";
 import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,6 @@ import { Texts } from "@/types/texts";
 import { Suspense } from "react";
 import { LanguageSwitch } from "./language-switch";
 import { ParticlesBG } from "./particles";
-import ProjectList from "./project-list/ProjectList";
 import { Contact } from "./sections/contact";
 import { Experiences } from "./sections/experiences";
 import WhatsAppButton from "./whats/whatsapp";
@@ -41,7 +41,7 @@ const MainPageInner = () => {
       <Experiences texts={texts.workExperience} />
       <Tecnologies techTexts={texts.technologies} />
       <AiEcosystem texts={texts.aiEcosystem} />
-      <ProjectList />
+      <Projects projectText={texts.projects} />
       <Contact texts={texts.contact} />
 
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 select-none">

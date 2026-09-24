@@ -66,6 +66,13 @@ export interface AiEcosystemTexts {
 
 export interface ProjectsTexts {
   title: string;
+  subtitle?: string;
+  description?: string;
+  featuredTab?: string;
+  githubTab?: string;
+  viewDetails?: string;
+  viewRepo?: string;
+  searchPlaceholder?: string;
   projects: Project[];
 }
 
@@ -76,6 +83,11 @@ export interface WorkExperienceTexts {
 
 export interface ContactTexts {
   title: string;
+  subtitle?: string;
+  description?: string;
+  statusBadge?: string;
+  directEmail?: string;
+  location?: string;
   nameLabel: string;
   namePlaceholder: string;
   emailLabel: string;
@@ -83,6 +95,8 @@ export interface ContactTexts {
   messageLabel: string;
   messagePlaceholder: string;
   sendButton: string;
+  sendingButton?: string;
+  sendAnotherButton?: string;
   successTitle: string;
   successMessage: string;
 }

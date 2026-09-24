@@ -1,16 +1,23 @@
+import {
+    img_biblioteca,
+    img_crud,
+    img_ecommerce,
+    img_instagram,
+    img_minesweeper,
+    img_windows,
+} from "@/assets/images/projects";
 import { ProjectsTexts } from "@/types/texts";
 import { tags } from "../../tags";
-import {
-  img_biblioteca,
-  img_crud,
-  img_ecommerce,
-  img_instagram,
-  img_minesweeper,
-  img_windows,
-} from "@/assets/images/projects";
 
 export const projects: ProjectsTexts = {
-  title: "Projects",
+  title: "Featured Projects",
+  subtitle: "Portfolio & Applications",
+  description: "Modern applications and interactive systems built with focus on high performance, scalable architecture, and TypeScript.",
+  featuredTab: "Featured",
+  githubTab: "GitHub Repositories",
+  viewDetails: "View Details",
+  viewRepo: "View Repository",
+  searchPlaceholder: "Search repository...",
   projects: [
     {
       title: "Bookstore e-commerce",
