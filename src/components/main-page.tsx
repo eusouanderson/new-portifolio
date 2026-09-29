@@ -11,13 +11,22 @@ import {
 import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { Texts } from "@/types/texts";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { BackgroundPlanet } from "./background-planet";
 import { LanguageSwitch } from "./language-switch";
-import { ParticlesBG } from "./particles";
 import { Contact } from "./sections/contact";
 import { Experiences } from "./sections/experiences";
 import WhatsAppButton from "./whats/whatsapp";
+
+const BackgroundPlanet = dynamic(
+  () => import("./background-planet").then((mod) => mod.BackgroundPlanet),
+  { ssr: false }
+);
+
+const ParticlesBG = dynamic(
+  () => import("./particles").then((mod) => mod.ParticlesBG),
+  { ssr: false }
+);
 
 interface Props {
   texts?: Texts;

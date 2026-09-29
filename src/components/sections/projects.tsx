@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { Project } from "@/types/projects";
 import { ProjectsTexts } from "@/types/texts";
@@ -11,16 +12,20 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FaGithub } from "react-icons/fa";
 import {
-    TbBrandGithubFilled,
-    TbCode,
-    TbExternalLink,
-    TbEye,
-    TbSearch,
-    TbX,
+  TbBrandGithubFilled,
+  TbChevronLeft,
+  TbChevronRight,
+  TbCode,
+  TbExternalLink,
+  TbEye,
+  TbSearch,
+  TbX,
 } from "react-icons/tb";
 import { Tilt } from "react-tilt";
 import type { Swiper as SwiperType } from "swiper";
+// @ts-ignore
 import "swiper/css";
+// @ts-ignore
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -153,15 +158,20 @@ const FeaturedProjectCard = ({
   );
 };
 
+const ITEMS_PER_PAGE = 10;
+
 export const Projects = ({ projectText }: Props) => {
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"featured" | "github" | "blog">("featured");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loadingRepos, setLoadingRepos] = useState<boolean>(false);
   const [reposError, setReposError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const swiperRef = useRef<SwiperType | null>(null);
+  const reposContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -173,17 +183,33 @@ export const Projects = ({ projectText }: Props) => {
         try {
           setLoadingRepos(true);
           const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "eusouanderson";
-          const response = await axios.get<Repo[]>(
-            `https://api.github.com/users/${username}/repos`,
-            {
-              params: {
-                per_page: 30,
-                sort: "updated",
-              },
+          let page = 1;
+          let all: Repo[] = [];
+          while (page <= 3) {
+            try {
+              const res = await axios.get<Repo[]>(
+                `https://api.github.com/users/${username}/repos`,
+                {
+                  params: {
+                    per_page: 100,
+                    page,
+                    sort: "updated",
+                  },
+                }
+              );
+              if (!res.data || res.data.length === 0) break;
+              all = [...all, ...res.data];
+              if (res.data.length < 100) break;
+              page += 1;
+            } catch {
+              break;
             }
-          );
-          const filtered = response.data.filter((r) => r.description);
-          setRepos(filtered.length > 0 ? filtered : response.data);
+          }
+          if (all.length > 0) {
+            setRepos(all);
+          } else {
+            setReposError("Não foi possível carregar os repositórios no momento.");
+          }
           setLoadingRepos(false);
         } catch {
           setReposError("Não foi possível carregar os repositórios no momento.");
@@ -238,6 +264,36 @@ export const Projects = ({ projectText }: Props) => {
     );
   }, [repos, searchQuery]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  const totalPages = Math.ceil(filteredRepos.length / ITEMS_PER_PAGE);
+
+  const paginatedRepos = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredRepos.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredRepos, currentPage]);
+
+  const paginationRange = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    if (currentPage <= 4) {
+      return [1, 2, 3, 4, 5, "...", totalPages];
+    }
+    if (currentPage >= totalPages - 3) {
+      return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+    return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+  }, [currentPage, totalPages]);
+
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages || page === currentPage) return;
+    setCurrentPage(page);
+    reposContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section
       id="projects"
@@ -279,6 +335,7 @@ export const Projects = ({ projectText }: Props) => {
           )}
         >
           {projectText.githubTab || "Repositórios GitHub"}
+          {repos.length > 0 && ` (${repos.length})`}
         </button>
         {projectText.blogPosts && projectText.blogPosts.length > 0 && (
           <button
@@ -351,7 +408,7 @@ export const Projects = ({ projectText }: Props) => {
       )}
 
       {activeTab === "github" && (
-        <div className="w-full space-y-6">
+        <div ref={reposContainerRef} className="w-full space-y-6">
           <div className="relative max-w-md mx-auto w-full">
             <input
               type="text"
@@ -394,54 +451,130 @@ export const Projects = ({ projectText }: Props) => {
           )}
 
           {!loadingRepos && !reposError && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filteredRepos.map((repo) => (
-                <div
-                  key={repo.id}
-                  className="p-5 rounded-2xl bg-[#121217]/80 backdrop-blur-xl border border-white/10 hover:border-light-blue/50 transition-all duration-300 hover:shadow-[0_0_25px_rgba(110,0,255,0.2)] flex flex-col justify-between group space-y-4"
-                >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <Link
-                        href={repo.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-base font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2 line-clamp-1"
-                      >
-                        <TbCode className="text-light-blue shrink-0 text-lg" />
-                        <span className="truncate">{repo.name}</span>
-                      </Link>
-                      <TbExternalLink className="text-white/40 group-hover:text-white shrink-0 text-sm transition-colors" />
-                    </div>
-                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
-                      {repo.description || "Repositório open-source sem descrição definida."}
-                    </p>
-                  </div>
+            <>
+              {filteredRepos.length === 0 ? (
+                <div className="p-8 rounded-2xl bg-[#121217]/60 border border-white/5 text-center text-sm text-white/50 max-w-md mx-auto">
+                  {language === "en"
+                    ? "No repositories found for this search."
+                    : "Nenhum repositório encontrado para esta busca."}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {paginatedRepos.map((repo) => (
+                    <div
+                      key={repo.id}
+                      className="p-5 rounded-2xl bg-[#121217]/80 backdrop-blur-xl border border-white/10 hover:border-light-blue/50 transition-all duration-300 hover:shadow-[0_0_25px_rgba(110,0,255,0.2)] flex flex-col justify-between group space-y-4"
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <Link
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-base font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2 line-clamp-1"
+                          >
+                            <TbCode className="text-light-blue shrink-0 text-lg" />
+                            <span className="truncate">{repo.name}</span>
+                          </Link>
+                          <TbExternalLink className="text-white/40 group-hover:text-white shrink-0 text-sm transition-colors" />
+                        </div>
+                        <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                          {repo.description ||
+                            (language === "en"
+                              ? "Open-source repository without description."
+                              : "Repositório open-source sem descrição definida.")}
+                        </p>
+                      </div>
 
-                  <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
-                    {repo.language ? (
-                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-                        {repo.language}
-                      </span>
-                    ) : (
-                      <span className="text-[11px] font-medium text-white/40">
-                        {projectText.openSourceLabel || "Código aberto"}
-                      </span>
+                      <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
+                        {repo.language ? (
+                          <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+                            {repo.language}
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-medium text-white/40">
+                            {projectText.openSourceLabel || "Código aberto"}
+                          </span>
+                        )}
+
+                        <Link
+                          href={repo.html_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-light-blue hover:text-accent font-medium transition-colors flex items-center gap-1"
+                        >
+                          <span>{projectText.accessRepo || "Acessar"}</span>
+                          <TbExternalLink className="text-xs" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {totalPages > 1 && (
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 select-none border-t border-white/5">
+                  <span className="text-xs text-white/40 font-mono">
+                    {language === "en"
+                      ? `Showing ${(currentPage - 1) * ITEMS_PER_PAGE + 1}-${Math.min(
+                          currentPage * ITEMS_PER_PAGE,
+                          filteredRepos.length
+                        )} of ${filteredRepos.length} repositories`
+                      : `Mostrando ${(currentPage - 1) * ITEMS_PER_PAGE + 1}-${Math.min(
+                          currentPage * ITEMS_PER_PAGE,
+                          filteredRepos.length
+                        )} de ${filteredRepos.length} repositórios`}
+                  </span>
+
+                  <div className="flex items-center gap-1 p-1 rounded-xl bg-[#121217]/70 backdrop-blur-md border border-white/10 shadow-inner">
+                    <button
+                      type="button"
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      aria-label={language === "en" ? "Previous page" : "Página anterior"}
+                      className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/5 disabled:opacity-20 disabled:cursor-not-allowed transition-all"
+                    >
+                      <TbChevronLeft className="text-sm" />
+                    </button>
+
+                    {paginationRange.map((page, idx) =>
+                      page === "..." ? (
+                        <span
+                          key={`dots-${idx}`}
+                          className="w-7 h-7 flex items-center justify-center text-xs text-white/30"
+                        >
+                          ...
+                        </span>
+                      ) : (
+                        <button
+                          key={`page-${page}`}
+                          type="button"
+                          onClick={() => handlePageChange(page as number)}
+                          className={cn(
+                            "min-w-[28px] h-7 px-1.5 rounded-lg text-xs font-mono transition-all duration-200",
+                            currentPage === page
+                              ? "bg-light-blue/20 text-light-blue border border-light-blue/40 shadow-[0_0_10px_rgba(110,0,255,0.25)] font-semibold"
+                              : "text-white/40 hover:text-white hover:bg-white/5"
+                          )}
+                        >
+                          {page}
+                        </button>
+                      )
                     )}
 
-                    <Link
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-light-blue hover:text-accent font-medium transition-colors flex items-center gap-1"
+                    <button
+                      type="button"
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      aria-label={language === "en" ? "Next page" : "Próxima página"}
+                      className="w-7 h-7 rounded-lg flex items-center justify-center text-white/50 hover:text-white hover:bg-white/5 disabled:opacity-20 disabled:cursor-not-allowed transition-all"
                     >
-                      <span>{projectText.accessRepo || "Acessar"}</span>
-                      <TbExternalLink className="text-xs" />
-                    </Link>
+                      <TbChevronRight className="text-sm" />
+                    </button>
                   </div>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </div>
       )}
