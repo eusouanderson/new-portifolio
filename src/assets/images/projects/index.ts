@@ -1,6 +1,20 @@
+export { default as img_3d_project } from "./3d-project.webp";
+export { default as img_apostou_ganhou } from "./apostou-ganhou.webp";
+export { default as img_ark_tree } from "./ark-tree.webp";
+export { default as img_axiom_bob } from "./axiom-bob.webp";
 export { default as img_biblioteca } from "./biblioteca.webp";
+export { default as img_bobot } from "./bobot.webp";
+export { default as img_busca_farma } from "./busca-farma.webp";
+export { default as img_clinic_odonto } from "./clinic-odonto.webp";
+export { default as img_compliance_tool_site } from "./compliance-tool.webp";
+export { default as img_crm } from "./crm.webp";
 export { default as img_crud } from "./crud.webp";
 export { default as img_ecommerce } from "./ecommerce.webp";
+export { default as img_ferrari } from "./ferrari.webp";
+export { default as img_graffiti } from "./graffiti.webp";
+export { default as img_houg } from "./houg.webp";
 export { default as img_instagram } from "./instagram.webp";
 export { default as img_minesweeper } from "./minesweeper.webp";
+export { default as img_odonto } from "./odonto.webp";
 export { default as img_windows } from "./windows.webp";
+

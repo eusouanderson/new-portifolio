@@ -125,4 +125,100 @@ export const tags: Tags = {
     name: "Backend Development",
     color: "#ffd700",
   },
+  "Tailwind CSS": {
+    name: "Tailwind CSS",
+    color: "#38bdf8",
+  },
+  "Three.js": {
+    name: "Three.js",
+    color: "#93c5fd",
+  },
+  Fastify: {
+    name: "Fastify",
+    color: "#ffffff",
+  },
+  "Drizzle ORM": {
+    name: "Drizzle ORM",
+    color: "#c5f74f",
+  },
+  Vuetify: {
+    name: "Vuetify",
+    color: "#1867c0",
+  },
+  Bun: {
+    name: "Bun",
+    color: "#fbf0df",
+  },
+  RabbitMQ: {
+    name: "RabbitMQ",
+    color: "#ff6600",
+  },
+  Celery: {
+    name: "Celery",
+    color: "#37814a",
+  },
+  Docker: {
+    name: "Docker",
+    color: "#2496ed",
+  },
+  "Discord.js": {
+    name: "Discord.js",
+    color: "#5865f2",
+  },
+  Pytest: {
+    name: "Pytest",
+    color: "#0a9edc",
+  },
+  Playwright: {
+    name: "Playwright",
+    color: "#2eaf42",
+  },
+  "Game Dev": {
+    name: "Game Dev",
+    color: "#f43f5e",
+  },
+  Cython: {
+    name: "Cython",
+    color: "#ffd242",
+  },
+  Segurança: {
+    name: "Segurança",
+    color: "#ef4444",
+  },
+  Security: {
+    name: "Security",
+    color: "#ef4444",
+  },
+  HTML: {
+    name: "HTML",
+    color: "#e34f26",
+  },
+  JavaScript: {
+    name: "JavaScript",
+    color: "#f7df1e",
+  },
+  Canvas: {
+    name: "Canvas",
+    color: "#f97316",
+  },
+  "Piston API": {
+    name: "Piston API",
+    color: "#10b981",
+  },
+  WhatsApp: {
+    name: "WhatsApp",
+    color: "#25d366",
+  },
+  JWT: {
+    name: "JWT",
+    color: "#d63aff",
+  },
+  "Web Scraping": {
+    name: "Web Scraping",
+    color: "#06b6d4",
+  },
+  Mobile: {
+    name: "Mobile",
+    color: "#a855f7",
+  },
 };

@@ -10,7 +10,7 @@ export interface Project {
   title: string;
   description: string;
   tags: Tag[];
-  image: string | StaticImageData;
+  image?: string | StaticImageData;
   github: string;
   height?: number;
   width?: number;

@@ -64,16 +64,24 @@ export interface AiEcosystemTexts {
   solutions: AiSolutionItem[];
 }
 
+export interface BlogPost {
+  title: string;
+  url: string;
+  description?: string;
+}
+
 export interface ProjectsTexts {
   title: string;
   subtitle?: string;
   description?: string;
   featuredTab?: string;
   githubTab?: string;
+  blogTab?: string;
   viewDetails?: string;
   viewRepo?: string;
   searchPlaceholder?: string;
   projects: Project[];
+  blogPosts?: BlogPost[];
 }
 
 export interface WorkExperienceTexts {

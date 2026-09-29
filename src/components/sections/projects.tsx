@@ -70,13 +70,27 @@ const FeaturedProjectCard = ({
         className="h-full flex flex-col rounded-2xl bg-[#121217]/85 backdrop-blur-xl border border-white/10 hover:border-light-blue/50 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_0_30px_rgba(110,0,255,0.25)] transition-all duration-500 overflow-hidden group"
       >
         <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-black/40">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#161622] via-[#101017] to-[#0c0c12] relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-light-blue/20 via-transparent to-transparent pointer-events-none" />
+              <div className="relative z-10 flex flex-col items-center gap-2">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-light-blue text-2xl shadow-inner group-hover:border-accent/40 group-hover:text-accent group-hover:shadow-[0_0_20px_rgba(110,0,255,0.3)] transition-all">
+                  <TbCode />
+                </div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
+                  {project.tags[0]?.name || "Code"}
+                </span>
+              </div>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#121217] via-transparent to-black/30 pointer-events-none" />
 
           {project.github && (
@@ -140,7 +154,7 @@ const FeaturedProjectCard = ({
 };
 
 export const Projects = ({ projectText }: Props) => {
-  const [activeTab, setActiveTab] = useState<"featured" | "github">("featured");
+  const [activeTab, setActiveTab] = useState<"featured" | "github" | "blog">("featured");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loadingRepos, setLoadingRepos] = useState<boolean>(false);
@@ -266,6 +280,20 @@ export const Projects = ({ projectText }: Props) => {
         >
           {projectText.githubTab || "Repositórios GitHub"}
         </button>
+        {projectText.blogPosts && projectText.blogPosts.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setActiveTab("blog")}
+            className={cn(
+              "px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300",
+              activeTab === "blog"
+                ? "bg-light-blue/20 text-white border border-light-blue/50 shadow-[0_0_15px_rgba(110,0,255,0.35)]"
+                : "text-white/60 hover:text-white"
+            )}
+          >
+            {projectText.blogTab || "Artigos & Blog"} ({projectText.blogPosts.length})
+          </button>
+        )}
       </div>
 
       {activeTab === "featured" && (
@@ -416,6 +444,47 @@ export const Projects = ({ projectText }: Props) => {
         </div>
       )}
 
+      {activeTab === "blog" && projectText.blogPosts && (
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectText.blogPosts.map((post, idx) => (
+            <div
+              key={`${post.title}-${idx}`}
+              className="p-6 rounded-2xl bg-[#121217]/85 backdrop-blur-xl border border-white/10 hover:border-light-blue/50 transition-all duration-300 hover:shadow-[0_0_25px_rgba(110,0,255,0.25)] flex flex-col justify-between group space-y-4"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-accent px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/25">
+                    Artigo Técnico
+                  </span>
+                  <TbExternalLink className="text-white/40 group-hover:text-white transition-colors text-base" />
+                </div>
+                <h3 className="text-base font-bold text-white group-hover:text-light-blue transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                {post.description && (
+                  <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                    {post.description}
+                  </p>
+                )}
+              </div>
+
+              <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                <Link
+                  href={post.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-light-blue hover:text-accent transition-colors"
+                >
+                  <span>Ler artigo</span>
+                  <TbExternalLink className="text-xs" />
+                </Link>
+                <span className="text-[11px] text-white/40 font-mono">eusouanderson.me</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {isMounted &&
         createPortal(
           <AnimatePresence>
@@ -446,13 +515,27 @@ export const Projects = ({ projectText }: Props) => {
                       <TbX className="text-2xl" />
                     </button>
 
-                    <div className="relative w-full h-56 sm:h-64 bg-black/50">
-                      <Image
-                        src={activeProject.image}
-                        alt={activeProject.title}
-                        fill
-                        className="object-cover"
-                      />
+                    <div className="relative w-full h-56 sm:h-64 bg-black/50 overflow-hidden">
+                      {activeProject.image ? (
+                        <Image
+                          src={activeProject.image}
+                          alt={activeProject.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#161622] via-[#101017] to-[#0c0c12] relative">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-light-blue/25 via-transparent to-transparent pointer-events-none" />
+                          <div className="relative z-10 flex flex-col items-center gap-2">
+                            <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-light-blue text-3xl shadow-inner">
+                              <TbCode />
+                            </div>
+                            <span className="text-xs font-semibold uppercase tracking-wider text-white/40">
+                              {activeProject.tags[0]?.name || "Code"}
+                            </span>
+                          </div>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#121217] via-transparent to-black/40" />
                     </div>
 

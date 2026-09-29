@@ -47,13 +47,19 @@ export function SliderProjects({ projects }: Props) {
               className="flex flex-col p-4 bg-dark-gray border border-white rounded-md gap-4 w-80 group relative mx-auto origin-center transition-all"
             >
               <div className="relative">
-                <Image
-                  height={project.height ?? 400}
-                  width={project.width ?? 400}
-                  src={project.image}
-                  alt={project.title}
-                  className="w-80 h-60 object-cover rounded-md"
-                />
+                {project.image ? (
+                  <Image
+                    height={project.height ?? 400}
+                    width={project.width ?? 400}
+                    src={project.image}
+                    alt={project.title}
+                    className="w-80 h-60 object-cover rounded-md"
+                  />
+                ) : (
+                  <div className="w-80 h-60 flex items-center justify-center bg-black/40 rounded-md">
+                    <span className="text-sm text-gray-400">{project.tags[0]?.name || "Code"}</span>
+                  </div>
+                )}
                 <div className="flex gap-4 absolute top-2 right-2 scale-95 transition-all hover:scale-100">
                   <Link
                     href={project.github}
