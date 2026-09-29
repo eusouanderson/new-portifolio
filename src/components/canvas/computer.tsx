@@ -2,7 +2,7 @@
 
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useState, useMemo } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import CanvasLoader from "../loader";
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
 const Computer = ({ isMobile = false }: Props) => {
   const { scene } = useGLTF("/assets/canvas/drone/scene.gltf");
 
-  // Ajustar a escala para um valor maior
+  
   const scale = useMemo(() => (isMobile ? 6.0 : 4.0), [isMobile]);
-  // Ajustar a posição para acomodar o aumento do modelo
+  
   const position = useMemo(
     () => (isMobile ? [0, -4, -3] : [0, -3, -2]),
     [isMobile]
@@ -29,7 +29,7 @@ const Computer = ({ isMobile = false }: Props) => {
         penumbra={1}
         intensity={5}
         castShadow
-        shadow-mapSize={[2048, 2048]}  // Aumentado para uma maior resolução de sombras
+        shadow-mapSize={[2048, 2048]}
       />
       <pointLight intensity={1} position={[1, 1, 1]} />
       <primitive

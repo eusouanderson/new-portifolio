@@ -39,8 +39,8 @@ export const workExperience: WorkExperienceTexts = {
       companyName: "Agência Close",
       description:
         "At Agência Close, I was responsible for backend and API development for our software using Electron and Vue.js. I worked on architecture and implementation of scalable and efficient solutions, ensuring seamless integration between frontend and backend.",
-      from: "2023-09-01",
-      to: "2023-10-31",
+      from: "2023-01-01",
+      to: "2023-11-30",
       tags: [tags["FastAPI"], tags["Vue.js"], tags["Backend Development"], tags["Render"]],
       iconName: "Vite",
     },

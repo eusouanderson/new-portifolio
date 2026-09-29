@@ -12,6 +12,7 @@ import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { Texts } from "@/types/texts";
 import { Suspense } from "react";
+import { BackgroundPlanet } from "./background-planet";
 import { LanguageSwitch } from "./language-switch";
 import { ParticlesBG } from "./particles";
 import { Contact } from "./sections/contact";
@@ -35,6 +36,9 @@ const MainPageInner = () => {
       <Navbar text={texts.navbar} />
       <Suspense fallback={<div>Loading...</div>}>
         <ParticlesBG />
+      </Suspense>
+      <Suspense fallback={null}>
+        <BackgroundPlanet />
       </Suspense>
       <AboutMe texts={texts.aboutMe} />
       <Hero texts={texts.hero} />

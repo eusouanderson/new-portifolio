@@ -12,7 +12,7 @@ export const workExperience: WorkExperienceTexts = {
       from: "2009-07-05",
       to: "2014-12-01",
       tags: [tags["Node.js"], tags["Express"], tags["MongoDB"]],
-      iconName: "Python",
+      iconName: "Node.js",
     },
     {
       name: "Desenvolvedor Fullstack",
