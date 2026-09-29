@@ -1,0 +1,4 @@
+allowBuilds:
+  '@tsparticles/engine': true
+  react-vertical-timeline-component: true
+  unrs-resolver: true
