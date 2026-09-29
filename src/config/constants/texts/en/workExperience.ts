@@ -3,6 +3,7 @@ import { tags } from "../../tags";
 
 export const workExperience: WorkExperienceTexts = {
   title: "Professional Experience",
+  subtitle: "Trajectory & Career",
   experiences: [
     {
       name: "Backend Development Intern",

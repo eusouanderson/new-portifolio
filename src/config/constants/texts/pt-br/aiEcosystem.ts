@@ -6,6 +6,9 @@ export const aiEcosystem: AiEcosystemTexts = {
   subtitle: "Soluções Autorais & Arquitetura Agêntica",
   description:
     "Desenvolvimento de ecossistemas avançados para Inteligência Artificial, abrangendo servidores MCP personalizados, persistência de contexto em MongoDB Atlas e extensões de orquestração para múltiplos modelos de linguagem.",
+  viewRepo: "Ver Repositório",
+  viewDetails: "Clique para ver detalhes",
+  highlightsLabel: "Destaques & Capacidades",
   solutions: [
     {
       id: "ai-provider-hub",

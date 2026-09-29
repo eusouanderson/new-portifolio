@@ -61,6 +61,9 @@ export interface AiEcosystemTexts {
   title: string;
   subtitle: string;
   description: string;
+  viewRepo?: string;
+  viewDetails?: string;
+  highlightsLabel?: string;
   solutions: AiSolutionItem[];
 }
 
@@ -80,12 +83,18 @@ export interface ProjectsTexts {
   viewDetails?: string;
   viewRepo?: string;
   searchPlaceholder?: string;
+  techAndToolsLabel?: string;
+  openSourceLabel?: string;
+  accessRepo?: string;
+  technicalArticleLabel?: string;
+  readArticleLabel?: string;
   projects: Project[];
   blogPosts?: BlogPost[];
 }
 
 export interface WorkExperienceTexts {
   title: string;
+  subtitle?: string;
   experiences: Experience[];
 }
 
@@ -96,6 +105,13 @@ export interface ContactTexts {
   statusBadge?: string;
   directEmail?: string;
   location?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  directEmailLabel?: string;
+  locationLabel?: string;
+  channelsLabel?: string;
+  formTitle?: string;
+  formDescription?: string;
   nameLabel: string;
   namePlaceholder: string;
   emailLabel: string;

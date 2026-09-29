@@ -25,7 +25,7 @@ interface Props {
 }
 
 const MainPageInner = () => {
-  const { texts } = useLanguage();
+  const { texts, language } = useLanguage();
 
   return (
     <main
@@ -51,7 +51,11 @@ const MainPageInner = () => {
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 select-none">
         <WhatsAppButton
           phoneNumber="5511983523869"
-          message="Olá! Gostaria de saber mais sobre seus projetos."
+          message={
+            language === "en"
+              ? "Hello! I'd like to learn more about your projects."
+              : "Olá! Gostaria de saber mais sobre seus projetos."
+          }
         />
         <LanguageSwitch />
       </div>

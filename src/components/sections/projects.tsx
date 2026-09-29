@@ -424,7 +424,9 @@ export const Projects = ({ projectText }: Props) => {
                         {repo.language}
                       </span>
                     ) : (
-                      <span className="text-[11px] font-medium text-white/40">Código aberto</span>
+                      <span className="text-[11px] font-medium text-white/40">
+                        {projectText.openSourceLabel || "Código aberto"}
+                      </span>
                     )}
 
                     <Link
@@ -433,7 +435,7 @@ export const Projects = ({ projectText }: Props) => {
                       rel="noopener noreferrer"
                       className="text-light-blue hover:text-accent font-medium transition-colors flex items-center gap-1"
                     >
-                      <span>Acessar</span>
+                      <span>{projectText.accessRepo || "Acessar"}</span>
                       <TbExternalLink className="text-xs" />
                     </Link>
                   </div>
@@ -454,7 +456,7 @@ export const Projects = ({ projectText }: Props) => {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-accent px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/25">
-                    Artigo Técnico
+                    {projectText.technicalArticleLabel || "Artigo Técnico"}
                   </span>
                   <TbExternalLink className="text-white/40 group-hover:text-white transition-colors text-base" />
                 </div>
@@ -475,7 +477,7 @@ export const Projects = ({ projectText }: Props) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-light-blue hover:text-accent transition-colors"
                 >
-                  <span>Ler artigo</span>
+                  <span>{projectText.readArticleLabel || "Ler artigo"}</span>
                   <TbExternalLink className="text-xs" />
                 </Link>
                 <span className="text-[11px] text-white/40 font-mono">eusouanderson.me</span>
@@ -551,7 +553,7 @@ export const Projects = ({ projectText }: Props) => {
 
                       <div className="space-y-2">
                         <span className="text-xs uppercase tracking-wider font-semibold text-white/60">
-                          Tecnologias & Ferramentas
+                          {projectText.techAndToolsLabel || "Tecnologias & Ferramentas"}
                         </span>
                         <div className="flex flex-wrap gap-2 pt-1">
                           {activeProject.tags.map((tag) => (

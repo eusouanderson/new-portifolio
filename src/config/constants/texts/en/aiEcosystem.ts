@@ -6,6 +6,9 @@ export const aiEcosystem: AiEcosystemTexts = {
   subtitle: "Authorial Solutions & Agentic Architecture",
   description:
     "Engineering advanced Artificial Intelligence ecosystems, including custom MCP servers, persistent context with MongoDB Atlas, and multi-model orchestration extensions.",
+  viewRepo: "View Repository",
+  viewDetails: "Click to view details",
+  highlightsLabel: "Highlights & Capabilities",
   solutions: [
     {
       id: "ai-provider-hub",

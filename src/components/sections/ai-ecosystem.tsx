@@ -6,13 +6,13 @@ import Link from "next/link";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-  TbBrain,
-  TbBrandGithubFilled,
-  TbBrandVscode,
-  TbCpu,
-  TbExternalLink,
-  TbTestPipe,
-  TbX,
+    TbBrain,
+    TbBrandGithubFilled,
+    TbBrandVscode,
+    TbCpu,
+    TbExternalLink,
+    TbTestPipe,
+    TbX,
 } from "react-icons/tb";
 import { Tilt } from "react-tilt";
 import type { Swiper as SwiperCore } from "swiper";
@@ -34,11 +34,13 @@ const iconRegistry: Record<AiSolutionItem["icon"], ReactElement> = {
 
 const SolutionCard = ({
   solution,
+  viewDetailsText,
   onMouseEnter,
   onMouseLeave,
   onClick,
 }: {
   solution: AiSolutionItem;
+  viewDetailsText?: string;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;
@@ -81,7 +83,7 @@ const SolutionCard = ({
             {solution.title}
           </h3>
           <span className="text-xs text-light-blue/70 mt-1 block opacity-0 group-hover:opacity-100 transition-opacity">
-            Clique para ver detalhes
+            {viewDetailsText || "Clique para ver detalhes"}
           </span>
         </div>
       </Tilt>
@@ -190,6 +192,7 @@ export const AiEcosystem = ({ texts }: Props) => {
             <SwiperSlide key={solution.id} className="h-auto">
               <SolutionCard
                 solution={solution}
+                viewDetailsText={texts.viewDetails}
                 onMouseEnter={handleCardMouseEnter}
                 onMouseLeave={handleCardMouseLeave}
                 onClick={() => handleCardClick(solution)}
@@ -258,7 +261,7 @@ export const AiEcosystem = ({ texts }: Props) => {
 
                     <div className="space-y-3 mb-6 bg-white/[0.02] border border-white/5 rounded-2xl p-4 sm:p-5">
                       <span className="text-xs uppercase tracking-wider text-light-blue font-semibold block mb-2">
-                        Destaques & Capacidades
+                        {texts.highlightsLabel || "Destaques & Capacidades"}
                       </span>
                       {activeSolution.features.map((feature, idx) => (
                         <div
@@ -292,7 +295,7 @@ export const AiEcosystem = ({ texts }: Props) => {
                           className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl bg-accent/20 hover:bg-accent/30 text-white border border-accent/40 transition-colors"
                         >
                           <TbBrandGithubFilled className="text-lg" />
-                          <span>Ver Repositório</span>
+                          <span>{texts.viewRepo || "Ver Repositório"}</span>
                           <TbExternalLink className="text-sm text-white/70" />
                         </Link>
                       )}

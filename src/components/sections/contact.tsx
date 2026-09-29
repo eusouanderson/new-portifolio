@@ -4,10 +4,10 @@ import { ContactTexts } from "@/types/texts";
 import Link from "next/link";
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import {
-  TbBrandGithubFilled,
-  TbExternalLink,
-  TbMail,
-  TbMapPin,
+    TbBrandGithubFilled,
+    TbExternalLink,
+    TbMail,
+    TbMapPin,
 } from "react-icons/tb";
 import { ContactForm } from "../contact-form/contact-form";
 
@@ -51,10 +51,10 @@ export const Contact = ({ texts }: Props) => {
 
             <div className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white">
-                Vamos construir algo incrível juntos?
+                {texts.ctaTitle || "Vamos construir algo incrível juntos?"}
               </h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Entre em contato para discutirmos novos projetos, posições em engenharia de software full-stack, integrações de IA ou consultoria técnica.
+                {texts.ctaDescription || "Entre em contato para discutirmos novos projetos, posições em engenharia de software full-stack, integrações de IA ou consultoria técnica."}
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export const Contact = ({ texts }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold text-white/50 uppercase tracking-wider block">
-                      E-mail direto
+                      {texts.directEmailLabel || "E-mail direto"}
                     </span>
                     <span className="text-sm font-medium text-white group-hover:text-accent transition-colors">
                       {directEmail}
@@ -85,7 +85,7 @@ export const Contact = ({ texts }: Props) => {
                 </div>
                 <div>
                   <span className="text-[11px] font-semibold text-white/50 uppercase tracking-wider block">
-                    Localização
+                    {texts.locationLabel || "Localização"}
                   </span>
                   <span className="text-sm font-medium text-white">
                     {location}
@@ -97,7 +97,7 @@ export const Contact = ({ texts }: Props) => {
 
           <div className="space-y-3 pt-4 border-t border-white/10">
             <span className="text-xs font-semibold uppercase tracking-wider text-white/60 block">
-              Redes & Canais
+              {texts.channelsLabel || "Redes & Canais"}
             </span>
             <div className="flex items-center gap-3">
               <Link
@@ -136,10 +136,10 @@ export const Contact = ({ texts }: Props) => {
         <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-[#121217]/85 backdrop-blur-xl border border-white/10 hover:border-light-blue/40 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-colors duration-500 flex flex-col justify-center">
           <div className="mb-6 space-y-1">
             <h3 className="text-xl sm:text-2xl font-bold text-white">
-              Envie uma mensagem direta
+              {texts.formTitle || "Envie uma mensagem direta"}
             </h3>
             <p className="text-xs sm:text-sm text-gray-300">
-              Preencha os campos abaixo e entrarei em contato brevemente.
+              {texts.formDescription || "Preencha os campos abaixo e entrarei em contato brevemente."}
             </p>
           </div>
           <ContactForm texts={texts} />

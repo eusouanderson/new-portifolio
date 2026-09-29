@@ -32,6 +32,11 @@ export const projects: ProjectsTexts = {
   viewDetails: "View Details",
   viewRepo: "View Repository",
   searchPlaceholder: "Search repository...",
+  techAndToolsLabel: "Technologies & Tools",
+  openSourceLabel: "Open Source",
+  accessRepo: "Access",
+  technicalArticleLabel: "Technical Article",
+  readArticleLabel: "Read article",
   blogPosts: [
     {
       title: "How to Build a Modern Web App with FastAPI and Vue.js",

@@ -13,7 +13,7 @@ export const Experiences = ({ texts }: Props) => {
     >
       <div className="text-center space-y-3 mb-12 md:mb-16">
         <span className="text-xs md:text-sm uppercase tracking-widest text-accent font-bold">
-          Trajetória & Carreira
+          {texts.subtitle || "Trajetória & Carreira"}
         </span>
         <h2 className="text-3xl md:text-5xl font-bold">{texts.title}</h2>
       </div>

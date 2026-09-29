@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/contexts/language-context";
 import { countYears, formatDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
 import { Experience, IconProject } from "@/types/experience";
@@ -7,19 +8,19 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { ReactElement, useRef } from "react";
 import { AiOutlineDotNet } from "react-icons/ai";
 import {
-  FaCss3Alt,
-  FaHtml5,
-  FaJava,
-  FaNode,
-  FaPython,
-  FaReact,
+    FaCss3Alt,
+    FaHtml5,
+    FaJava,
+    FaNode,
+    FaPython,
+    FaReact,
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import {
-  SiNextdotjs,
-  SiTypescript,
-  SiVite,
-  SiVuedotjs,
+    SiNextdotjs,
+    SiTypescript,
+    SiVite,
+    SiVuedotjs,
 } from "react-icons/si";
 import { TbBriefcase, TbBuilding, TbCalendar } from "react-icons/tb";
 import { Tilt } from "react-tilt";
@@ -44,6 +45,7 @@ export const ExperienceTimeline = ({
 }: {
   experiences: Experience[];
 }) => {
+  const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -197,15 +199,26 @@ export const ExperienceTimeline = ({
                           <TbCalendar className="text-sm" />
                         )}
                         <span>
-                          De {formatDate(experience.from, "MM/yyyy")} a{" "}
-                          {isCurrent
-                            ? "Momento"
-                            : formatDate(experience.to!, "MM/yyyy")}
+                          {language === "en" ? (
+                            <>
+                              From {formatDate(experience.from, "MM/yyyy")} to{" "}
+                              {isCurrent
+                                ? "Present"
+                                : formatDate(experience.to!, "MM/yyyy")}
+                            </>
+                          ) : (
+                            <>
+                              De {formatDate(experience.from, "MM/yyyy")} a{" "}
+                              {isCurrent
+                                ? "Momento"
+                                : formatDate(experience.to!, "MM/yyyy")}
+                            </>
+                          )}
                         </span>
                       </span>
 
                       <span className="text-xs text-gray-400 font-medium px-2.5 py-1 rounded-full bg-white/5 border border-white/5">
-                        {countYears(experience.from, experience.to)}
+                        {countYears(experience.from, experience.to, language)}
                       </span>
                     </div>
 
