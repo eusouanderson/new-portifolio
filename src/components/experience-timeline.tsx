@@ -60,14 +60,41 @@ export const ExperienceTimeline = ({
 
   return (
     <div ref={containerRef} className="relative w-full py-8 md:py-16">
-      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+        <div className="relative flex items-center justify-center w-4 h-4 rounded-full bg-[#121217] border-2 border-accent shadow-[0_0_12px_#00d8ff,0_0_20px_#6e00ff]">
+          <span className="w-1.5 h-1.5 rounded-full bg-white shadow-sm" />
+        </div>
+      </div>
+
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 -bottom-24 w-[2px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
 
       <motion.div
         style={{ scaleY, transformOrigin: "top" }}
-        className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent via-light-blue to-purple-500 shadow-[0_0_12px_#00d8ff,0_0_24px_#6e00ff]"
+        className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 -bottom-24 w-[2px] bg-gradient-to-b from-accent via-light-blue to-purple-500 shadow-[0_0_12px_#00d8ff,0_0_24px_#6e00ff]"
       />
 
-      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-2 pointer-events-none overflow-hidden">
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 -bottom-24 w-2 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            top: ["-10%", "110%"],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute left-1/2 -translate-x-1/2 w-1.5 h-24 bg-gradient-to-b from-transparent via-white to-transparent shadow-[0_0_15px_#00d8ff]"
+        />
+      </div>
+
+      <div className="md:hidden absolute left-6 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+      <motion.div
+        style={{ scaleY, transformOrigin: "top" }}
+        className="md:hidden absolute left-6 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent via-light-blue to-purple-500 shadow-[0_0_12px_#00d8ff,0_0_24px_#6e00ff]"
+      />
+
+      <div className="md:hidden absolute left-6 -translate-x-1/2 top-0 bottom-0 w-2 pointer-events-none overflow-hidden">
         <motion.div
           animate={{
             top: ["-10%", "110%"],
@@ -142,7 +169,7 @@ export const ExperienceTimeline = ({
                   viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   style={{ transformOrigin: isEven ? "right" : "left" }}
-                  className="h-[2px] w-full bg-gradient-to-r from-light-blue via-accent to-light-blue shadow-[0_0_10px_#00d8ff]"
+                  className="h-[2px] w-full bg-gradient-to-r from-light-blue via-accent to-light-blue shadow-[0_0_10px_#00d8ff,0_0_20px_#6e00ff]"
                 />
               </div>
 
@@ -156,7 +183,7 @@ export const ExperienceTimeline = ({
                   viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   style={{ transformOrigin: "left" }}
-                  className="h-[2px] w-full bg-gradient-to-r from-light-blue to-accent shadow-[0_0_8px_#00d8ff]"
+                  className="h-[2px] w-full bg-gradient-to-r from-light-blue via-accent to-light-blue shadow-[0_0_10px_#00d8ff,0_0_20px_#6e00ff]"
                 />
               </div>
 
@@ -256,6 +283,36 @@ export const ExperienceTimeline = ({
             </div>
           );
         })}
+      </div>
+
+      <div className="md:hidden absolute -bottom-12 left-6 right-1/2 h-[2px] pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-white/10" />
+        <motion.div
+          style={{ scaleX: scaleY, transformOrigin: "left" }}
+          className="absolute inset-0 bg-gradient-to-r from-light-blue via-accent to-light-blue shadow-[0_0_10px_#00d8ff,0_0_20px_#6e00ff]"
+        />
+      </div>
+
+      <div className="md:hidden absolute -bottom-12 left-6 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#121217] border border-accent shadow-[0_0_10px_#00d8ff,0_0_15px_#6e00ff]" />
+      </div>
+
+      <div className="md:hidden absolute -bottom-12 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#121217] border border-light-blue shadow-[0_0_10px_#00d8ff,0_0_15px_#6e00ff]" />
+      </div>
+
+      <div className="md:hidden absolute -bottom-24 left-1/2 -translate-x-1/2 w-[2px] h-12 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-white/10" />
+        <motion.div
+          style={{ scaleY, transformOrigin: "top" }}
+          className="absolute inset-0 bg-gradient-to-b from-accent via-light-blue to-purple-500 shadow-[0_0_12px_#00d8ff,0_0_24px_#6e00ff]"
+        />
+      </div>
+
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 pointer-events-none">
+        <div className="relative flex items-center justify-center w-3.5 h-3.5 rounded-full bg-[#121217] border border-light-blue shadow-[0_0_10px_#00d8ff,0_0_15px_#6e00ff]">
+          <span className="w-1 h-1 rounded-full bg-accent" />
+        </div>
       </div>
     </div>
   );
