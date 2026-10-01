@@ -1,7 +1,6 @@
 "use client";
 import { motionVar } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import "@/styles/custom-animation.css";
 import { HeroTexts } from "@/types/texts";
 import { downloadFile } from "@/utils/downloadFile";
 import { motion } from "framer-motion";
@@ -56,7 +55,7 @@ export const Hero = ({ texts }: Props) => {
             ))}
           </motion.h1>
           <motion.span
-            className="z-10 max-md:text-sm max-sm:text-xs"
+            className="z-10 max-md:text-sm max-sm:text-xs whitespace-pre-line"
             variants={motionVar}
             initial={"initial"}
             viewport={{ once: true }}

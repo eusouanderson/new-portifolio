@@ -45,6 +45,11 @@ export const Navbar = ({ text }: Props) => {
                 <Link href="#ai-ecosystem" className="stroke-button py-1">{text.ai}</Link>
               </li>
             )}
+            {text.chat && (
+              <li>
+                <Link href="#ai-chat" className="stroke-button py-1">{text.chat}</Link>
+              </li>
+            )}
             <li>
               <Link href="#projects" className="stroke-button py-1">{text.projects}</Link>
             </li>
@@ -99,6 +104,13 @@ export const Navbar = ({ text }: Props) => {
                 <li>
                   <Link href="#ai-ecosystem" onClick={closeMenu}>
                     {text.ai}
+                  </Link>
+                </li>
+              )}
+              {text.chat && (
+                <li>
+                  <Link href="#ai-chat" onClick={closeMenu}>
+                    {text.chat}
                   </Link>
                 </li>
               )}

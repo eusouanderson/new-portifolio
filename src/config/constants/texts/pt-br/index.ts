@@ -1,5 +1,6 @@
 import { Texts } from "@/types/texts";
 import { aboutme as aboutMe } from "./aboutme";
+import { aiChat } from "./aiChat";
 import { aiEcosystem } from "./aiEcosystem";
 import { contact } from "./contact";
 import { hero } from "./hero";
@@ -15,6 +16,7 @@ export const ptBr: Texts = {
   projects,
   technologies,
   aiEcosystem,
+  aiChat,
   workExperience,
   contact,
 };

@@ -9,6 +9,7 @@ export interface Texts {
   projects: ProjectsTexts;
   technologies: TechnologiesTexts;
   aiEcosystem?: AiEcosystemTexts;
+  aiChat?: AiChatTexts;
   workExperience: WorkExperienceTexts;
   contact: ContactTexts;
 }
@@ -18,6 +19,7 @@ export interface NavbarTexts {
   aboutMe: string;
   tech: string;
   ai?: string;
+  chat?: string;
   workExp: string;
   projects: string;
   contact: string;
@@ -123,4 +125,22 @@ export interface ContactTexts {
   sendAnotherButton?: string;
   successTitle: string;
   successMessage: string;
+}
+
+export interface AiChatTexts {
+  title: string;
+  subtitle: string;
+  description: string;
+  badge: string;
+  statusOnline: string;
+  inputPlaceholder: string;
+  sendButton: string;
+  thinkingText: string;
+  clearButton: string;
+  suggestedQuestionsTitle: string;
+  suggestedQuestions: string[];
+  mcpToolBadgePrefix: string;
+  welcomeMessage: string;
+  errorGeneric: string;
+  groqMissingNotice: string;
 }

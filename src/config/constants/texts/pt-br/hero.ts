@@ -13,5 +13,5 @@ export const hero: HeroTexts = {
     },
   ],
   subtitle:
-    "Expert em TypeScript, Inteligência Artificial (MCP, RAG e Agentes Autônomos) e ecossistemas web modernos. Ampla experiência com Vue 3, React, Next.js, APIs de alto desempenho com Express e Hono, e testes automatizados de alta cobertura.",
+    "Expert em TypeScript, Inteligência Artificial (MCP, RAG e Agentes Autônomos) e ecossistemas web modernos.\nAmpla experiência com Vue 3, React, Next.js, APIs de alto desempenho com Express e Hono, e testes automatizados de alta cobertura.",
 };

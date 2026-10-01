@@ -7,5 +7,6 @@ export const navbar: NavbarTexts = {
   workExp: "Experience",
   tech: "Technologies",
   ai: "AI & MCP",
+  chat: "AI Chat",
   projects: "Projects",
 };

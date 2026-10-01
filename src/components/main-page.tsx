@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/navbar";
 import {
     AboutMe,
+    AiChat,
     AiEcosystem,
     Hero,
     Projects,
@@ -54,6 +55,7 @@ const MainPageInner = () => {
       <Experiences texts={texts.workExperience} />
       <Tecnologies techTexts={texts.technologies} />
       <AiEcosystem texts={texts.aiEcosystem} />
+      <AiChat texts={texts.aiChat} />
       <Projects projectText={texts.projects} />
       <Contact texts={texts.contact} />
 

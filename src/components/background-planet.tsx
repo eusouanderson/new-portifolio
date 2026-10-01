@@ -23,8 +23,9 @@ const sectionConfigs: SectionConfig[] = [
   { id: "work-exp", side: 1 },
   { id: "tech", side: 0 },
   { id: "ai-ecosystem", side: 1 },
-  { id: "projects", side: 0 },
-  { id: "contact-me", side: 1 },
+  { id: "ai-chat", side: 0 },
+  { id: "projects", side: 1 },
+  { id: "contact-me", side: 0 },
 ];
 
 export const BackgroundPlanet = () => {
