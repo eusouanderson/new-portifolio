@@ -1,11 +1,12 @@
 "use client";
+import { publicAssetPath } from "@/lib/utils";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import CanvasLoader from "../loader";
 
 const Earth = () => {
-    const earth = useGLTF("/assets/canvas/planet/scene.gltf");
+    const earth = useGLTF(publicAssetPath("/assets/canvas/planet/scene.gltf"));
 
     return (
         <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />

@@ -1,6 +1,6 @@
 "use client";
 import { motionVar } from "@/lib/motion";
-import { cn } from "@/lib/utils";
+import { cn, publicAssetPath } from "@/lib/utils";
 import { HeroTexts } from "@/types/texts";
 import { downloadFile } from "@/utils/downloadFile";
 import { motion } from "framer-motion";
@@ -67,7 +67,7 @@ export const Hero = ({ texts }: Props) => {
           <div className="flex items-center gap-4 mt-4">
             <Button
               onClick={() => {
-                downloadFile("/assets/cv.pdf", "AndersonRodriguesCV.pdf");
+                downloadFile(publicAssetPath("/assets/cv.pdf"), "AndersonRodriguesCV.pdf");
               }}
               data-tooltip-id="my-tooltip"
               data-tooltip-content="CV"

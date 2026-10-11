@@ -49,6 +49,12 @@ Para rodar o projeto localmente, siga os passos abaixo:
     ```
 6. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
+## Deploy no GitHub Pages
+
+O workflow em `.github/workflows/deploy-pages.yml` publica o site automaticamente ao enviar alterações para `main` ou `master`. Em **Settings > Pages**, selecione **GitHub Actions** como origem.
+
+Para habilitar o chat, adicione o secret `GROQ_API_KEY` em **Settings > Secrets and variables > Actions**. Atenção: como o chat chama a Groq diretamente do navegador, essa chave será incluída nos arquivos JavaScript públicos do site. Use uma chave dedicada, limite o uso no painel da Groq e revogue-a se houver consumo inesperado. Não reutilize uma chave com acesso a outros serviços.
+
 ## Estrutura do Projeto
 
 ```bash

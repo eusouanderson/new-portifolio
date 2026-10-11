@@ -1,5 +1,6 @@
 "use client";
 
+import { publicAssetPath } from "@/lib/utils";
 import { Float, OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef } from "react";
@@ -82,7 +83,7 @@ const DigitalOrbitalElements = () => {
 };
 
 const CyberEarth = () => {
-  const earth = useGLTF("/assets/canvas/planet/scene.gltf");
+  const earth = useGLTF(publicAssetPath("/assets/canvas/planet/scene.gltf"));
   const wireframeRef = useRef<THREE.Mesh>(null);
   const icosahedronRef = useRef<THREE.Mesh>(null);
 
@@ -189,4 +190,4 @@ export const EarthCanvas = ({ className }: Props) => {
   );
 };
 
-useGLTF.preload("/assets/canvas/planet/scene.gltf");
+useGLTF.preload(publicAssetPath("/assets/canvas/planet/scene.gltf"));

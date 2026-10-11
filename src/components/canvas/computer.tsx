@@ -1,5 +1,6 @@
 "use client";
 
+import { publicAssetPath } from "@/lib/utils";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useState } from "react";
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Computer = ({ isMobile = false }: Props) => {
-  const { scene } = useGLTF("/assets/canvas/drone/scene.gltf");
+  const { scene } = useGLTF(publicAssetPath("/assets/canvas/drone/scene.gltf"));
 
   
   const scale = useMemo(() => (isMobile ? 6.0 : 4.0), [isMobile]);

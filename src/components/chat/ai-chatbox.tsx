@@ -1,9 +1,12 @@
 "use client";
 
+import { executeMcpTool } from "@/lib/mcp/executor";
+import { mcpTools } from "@/lib/mcp/tools-definitions";
 import { cn } from "@/lib/utils";
 import { ChatMessage } from "@/types/chat";
 import { AiChatTexts } from "@/types/texts";
 import { AnimatePresence, motion } from "framer-motion";
+import OpenAI from "openai";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { TbCpu, TbRefresh, TbRobot, TbSend, TbSparkles } from "react-icons/tb";
 
@@ -11,6 +14,15 @@ interface Props {
   texts: AiChatTexts;
   className?: string;
 }
+
+const SYSTEM_PROMPT = `Você é o Agente Autônomo e Assistente Oficial do portfólio de Anderson Rodrigues, Engenheiro de Software Fullstack e Especialista em IA (MCP, RAG, Agentes Autônomos).
+Sua missão é responder a recrutadores, desenvolvedores e clientes sobre as competências, projetos, experiências profissionais e contatos do Anderson.
+
+Diretrizes obrigatórias:
+1. Sempre utilize as ferramentas (MCP Tools) disponíveis para consultar os dados reais e precisos do Anderson antes de responder. Nunca invente dados.
+2. Seja objetivo, técnico, cortês e profissional. Use markdown elegante (tópicos com marcadores, negrito e links).
+3. Adapte seu idioma ao do usuário (se perguntar em português, responda em português; se em inglês, responda em inglês).
+4. Destaque os diferenciais do Anderson: domínio em TypeScript, ecossistema Vue 3 (Composition API/Pinia), React/Next.js, APIs de alto desempenho (Express/Hono/Node.js), testes automatizados de alta cobertura (Vitest/Jest) e soluções autorais em IA com Model Context Protocol (MCP).`;
 
 export const AiChatbox = ({ texts, className }: Props) => {
   const [messages, setMessages] = useState<ChatMessage[]>(() => [
@@ -56,29 +68,79 @@ export const AiChatbox = ({ texts, className }: Props) => {
     setIsLoading(true);
 
     try {
+      const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
+      if (!apiKey) {
+        throw new Error("NEXT_PUBLIC_GROQ_API_KEY não configurada.");
+      }
+
+      const groq = new OpenAI({
+        apiKey,
+        baseURL: "https://api.groq.com/openai/v1",
+        dangerouslyAllowBrowser: true,
+      });
       const apiMessages = [...messages, userMessage].map((m) => ({
         role: m.role,
         content: m.content,
       }));
-
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: apiMessages }),
+      const formattedMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...apiMessages.map((message) => ({
+          role: message.role as "user" | "assistant" | "system",
+          content: message.content,
+        })),
+      ];
+      const initialResponse = await groq.chat.completions.create({
+        model: "llama-3.3-70b-versatile",
+        messages: formattedMessages,
+        tools: mcpTools as unknown as OpenAI.Chat.ChatCompletionTool[],
+        tool_choice: "auto",
+        temperature: 0.3,
+        max_tokens: 1024,
       });
 
-      if (!res.ok) {
-        throw new Error("Erro de comunicação com o servidor.");
+      const responseMessage = initialResponse.choices[0]?.message;
+      const toolsUsed: string[] = [];
+
+      if (responseMessage?.tool_calls?.length) {
+        formattedMessages.push(responseMessage);
+
+        for (const toolCall of responseMessage.tool_calls) {
+          toolsUsed.push(toolCall.function.name);
+          let args: Record<string, unknown> = {};
+
+          try {
+            args = JSON.parse(toolCall.function.arguments || "{}");
+          } catch {
+            args = {};
+          }
+
+          const toolResult = await executeMcpTool(toolCall.function.name, args);
+          formattedMessages.push({
+            role: "tool",
+            tool_call_id: toolCall.id,
+            content: JSON.stringify(toolResult.result),
+          });
+        }
       }
 
-      const data = await res.json();
+      const finalResponse = responseMessage?.tool_calls?.length
+        ? await groq.chat.completions.create({
+            model: "llama-3.3-70b-versatile",
+            messages: formattedMessages,
+            temperature: 0.3,
+            max_tokens: 1024,
+          })
+        : undefined;
 
       const assistantMessage: ChatMessage = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
-        content: data.message || texts.errorGeneric,
+        content:
+          finalResponse?.choices[0]?.message.content ||
+          responseMessage?.content ||
+          texts.errorGeneric,
         timestamp: Date.now(),
-        toolsUsed: data.toolsUsed || [],
+        toolsUsed,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
