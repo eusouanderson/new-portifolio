@@ -3,5 +3,6 @@ packages:
 
 allowBuilds:
   '@tsparticles/engine': true
+  esbuild: true
   react-vertical-timeline-component: true
   unrs-resolver: true

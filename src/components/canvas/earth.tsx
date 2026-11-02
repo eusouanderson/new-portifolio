@@ -3,14 +3,20 @@
 import { publicAssetPath } from "@/lib/utils";
 import { Float, OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { MotionValue } from "framer-motion";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
-interface Props {
+export interface EarthCanvasProps {
   className?: string;
+  scrollVelocity?: MotionValue<number>;
 }
 
-const DigitalOrbitalElements = () => {
+interface CyberEarthProps {
+  scrollVelocity?: MotionValue<number>;
+}
+
+const DigitalOrbitalElements = ({ scrollVelocity }: CyberEarthProps) => {
   const ring1Ref = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);
   const pointsRef = useRef<THREE.Points>(null);
@@ -29,14 +35,17 @@ const DigitalOrbitalElements = () => {
   }, []);
 
   useFrame((_, delta) => {
+    const vel = scrollVelocity ? Math.abs(scrollVelocity.get()) : 0;
+    const boost = 1 + Math.min(vel * 3, 3);
+
     if (ring1Ref.current) {
-      ring1Ref.current.rotation.z += delta * 0.35;
+      ring1Ref.current.rotation.z += delta * 0.35 * boost;
     }
     if (ring2Ref.current) {
-      ring2Ref.current.rotation.z -= delta * 0.2;
+      ring2Ref.current.rotation.z -= delta * 0.2 * boost;
     }
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * 0.15;
+      pointsRef.current.rotation.y += delta * 0.15 * boost;
     }
   });
 
@@ -82,10 +91,12 @@ const DigitalOrbitalElements = () => {
   );
 };
 
-const CyberEarth = () => {
+const CyberEarth = ({ scrollVelocity }: CyberEarthProps) => {
   const earth = useGLTF(publicAssetPath("/assets/canvas/planet/scene.gltf"));
   const wireframeRef = useRef<THREE.Mesh>(null);
   const icosahedronRef = useRef<THREE.Mesh>(null);
+  const earthGroupRef = useRef<THREE.Group>(null);
+  const tiltGroupRef = useRef<THREE.Group>(null);
 
   useEffect(() => {
     earth.scene.traverse((child) => {
@@ -113,20 +124,45 @@ const CyberEarth = () => {
     });
   }, [earth]);
 
-  useFrame((_, delta) => {
-    if (wireframeRef.current) {
-      wireframeRef.current.rotation.y += delta * 0.15;
+  useFrame((state, delta) => {
+    const vel = scrollVelocity ? Math.abs(scrollVelocity.get()) : 0;
+    const boost = 1 + Math.min(vel * 3.5, 3.5);
+
+    if (earthGroupRef.current) {
+      earthGroupRef.current.rotation.y += delta * 0.4 * boost;
     }
+
+    if (wireframeRef.current) {
+      wireframeRef.current.rotation.y += delta * 0.18 * boost;
+    }
+
     if (icosahedronRef.current) {
-      icosahedronRef.current.rotation.y -= delta * 0.1;
-      icosahedronRef.current.rotation.x += delta * 0.05;
+      icosahedronRef.current.rotation.y -= delta * 0.12 * boost;
+      icosahedronRef.current.rotation.x += delta * 0.06 * boost;
+    }
+
+    if (tiltGroupRef.current) {
+      const targetTiltX = -state.pointer.y * 0.35;
+      const targetTiltZ = state.pointer.x * 0.35;
+      tiltGroupRef.current.rotation.x = THREE.MathUtils.lerp(
+        tiltGroupRef.current.rotation.x,
+        targetTiltX,
+        0.06
+      );
+      tiltGroupRef.current.rotation.z = THREE.MathUtils.lerp(
+        tiltGroupRef.current.rotation.z,
+        targetTiltZ,
+        0.06
+      );
     }
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
-      <group scale={3.3}>
-        <primitive object={earth.scene} position-y={0} rotation-y={0} />
+    <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
+      <group ref={tiltGroupRef} scale={3.3}>
+        <group ref={earthGroupRef}>
+          <primitive object={earth.scene} position-y={0} rotation-y={0} />
+        </group>
 
         <mesh ref={wireframeRef}>
           <sphereGeometry args={[0.675, 32, 32]} />
@@ -148,13 +184,13 @@ const CyberEarth = () => {
           />
         </mesh>
 
-        <DigitalOrbitalElements />
+        <DigitalOrbitalElements scrollVelocity={scrollVelocity} />
       </group>
     </Float>
   );
 };
 
-export const EarthCanvas = ({ className }: Props) => {
+export const EarthCanvas = ({ className, scrollVelocity }: EarthCanvasProps) => {
   return (
     <Canvas
       shadows
@@ -175,15 +211,18 @@ export const EarthCanvas = ({ className }: Props) => {
       <pointLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
       <Suspense fallback={null}>
         <OrbitControls
-          autoRotate
-          autoRotateSpeed={1.6}
+          autoRotate={true}
+          autoRotateSpeed={1.5}
+          enableRotate={true}
+          rotateSpeed={0.85}
+          enableDamping={true}
+          dampingFactor={0.05}
           enableZoom={false}
           enablePan={false}
-          enableRotate={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 1.5}
+          minPolarAngle={Math.PI / 3}
         />
-        <CyberEarth />
+        <CyberEarth scrollVelocity={scrollVelocity} />
         <Preload all />
       </Suspense>
     </Canvas>

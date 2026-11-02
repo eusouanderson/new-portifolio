@@ -175,7 +175,7 @@ export const getAiEcosystemData = (solutionId?: string) => {
         badge: sol.badge,
         description: sol.description,
         features: sol.features,
-        tags: sol.tags.map((t) => t.name),
+        tags: sol.tags.filter(Boolean).map((t) => t.name),
         github: sol.github,
       })),
     };
@@ -191,7 +191,7 @@ export const getAiEcosystemData = (solutionId?: string) => {
     badge: solution.badge,
     description: solution.description,
     features: solution.features,
-    tags: solution.tags.map((t) => t.name),
+    tags: solution.tags.filter(Boolean).map((t) => t.name),
     github: solution.github,
   } : null;
 };

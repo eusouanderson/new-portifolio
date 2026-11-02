@@ -2,12 +2,12 @@
 
 import { Navbar } from "@/components/navbar";
 import {
-    AboutMe,
-    AiChat,
-    AiEcosystem,
-    Hero,
-    Projects,
-    Tecnologies,
+  AboutMe,
+  AiChat,
+  AiEcosystem,
+  Hero,
+  Projects,
+  Tecnologies,
 } from "@/components/sections";
 import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";

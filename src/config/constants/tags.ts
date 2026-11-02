@@ -21,6 +21,10 @@ export const tags: Tags = {
     name: "Vue 3",
     color: "#42b883",
   },
+  Pinia: {
+    name: "Pinia",
+    color: "#ffe066",
+  },
   "Vue.js": {
     name: "Vue.js",
     color: "#42b883",
