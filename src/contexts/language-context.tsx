@@ -2,12 +2,12 @@
 
 import { texts as allTexts } from "@/config/constants";
 import { Texts } from "@/types/texts";
-import {
-    createContext,
-    ReactNode,
-    useContext,
-    useEffect,
-    useState,
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 
 type SupportedLanguage = "pt-br" | "en";

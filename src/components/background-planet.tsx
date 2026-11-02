@@ -10,7 +10,7 @@ import {
     useTransform,
     useVelocity,
 } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface SectionConfig {
   id: string;
@@ -39,37 +39,44 @@ export const BackgroundPlanet = () => {
 
   const { scrollYProgress } = useScroll();
 
-  const checkSection = useCallback(() => {
-    const trigger = window.innerHeight * 0.45;
-    let currentSide = 1;
-    let found = false;
+  const rafId = useRef<number | null>(null);
 
-    for (const item of sectionConfigs) {
-      const el = document.getElementById(item.id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= trigger && rect.bottom >= trigger) {
-          currentSide = item.side;
-          found = true;
-          break;
+  const checkSection = useCallback(() => {
+    if (rafId.current !== null) return;
+
+    rafId.current = window.requestAnimationFrame(() => {
+      rafId.current = null;
+      const trigger = window.innerHeight * 0.45;
+      let currentSide = 1;
+      let found = false;
+
+      for (const item of sectionConfigs) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= trigger && rect.bottom >= trigger) {
+            currentSide = item.side;
+            found = true;
+            break;
+          }
         }
       }
-    }
 
-    if (!found) {
-      const progress = scrollYProgress.get();
-      if (progress < 0.12) currentSide = 1;
-      else if (progress < 0.26) currentSide = 0;
-      else if (progress < 0.44) currentSide = 1;
-      else if (progress < 0.6) currentSide = 0;
-      else if (progress < 0.75) currentSide = 1;
-      else if (progress < 0.89) currentSide = 0;
-      else currentSide = 1;
-    }
+      if (!found) {
+        const progress = scrollYProgress.get();
+        if (progress < 0.12) currentSide = 1;
+        else if (progress < 0.26) currentSide = 0;
+        else if (progress < 0.44) currentSide = 1;
+        else if (progress < 0.6) currentSide = 0;
+        else if (progress < 0.75) currentSide = 1;
+        else if (progress < 0.89) currentSide = 0;
+        else currentSide = 1;
+      }
 
-    if (targetXNormalized.get() !== currentSide) {
-      targetXNormalized.set(currentSide);
-    }
+      if (targetXNormalized.get() !== currentSide) {
+        targetXNormalized.set(currentSide);
+      }
+    });
   }, [scrollYProgress, targetXNormalized]);
 
   useEffect(() => {
@@ -84,11 +91,12 @@ export const BackgroundPlanet = () => {
 
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
-    window.addEventListener("scroll", checkSection, { passive: true });
 
     return () => {
       window.removeEventListener("resize", updateDimensions);
-      window.removeEventListener("scroll", checkSection);
+      if (rafId.current !== null) {
+        window.cancelAnimationFrame(rafId.current);
+      }
     };
   }, [checkSection]);
 
@@ -129,6 +137,12 @@ export const BackgroundPlanet = () => {
     (val) => leftX + val * (rightX - leftX)
   );
 
+  const scrollVelocity = useVelocity(scrollYProgress);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    stiffness: 140,
+    damping: 18,
+  });
+
   const xVelocity = useVelocity(smoothXNormalized);
   const tilt = useTransform(xVelocity, [-6, 0, 6], [-12, 0, 12]);
   const smoothTilt = useSpring(tilt, {
@@ -148,10 +162,10 @@ export const BackgroundPlanet = () => {
           width: planetSize,
           height: planetSize,
         }}
-        className="relative"
+        className="relative pointer-events-auto cursor-grab active:cursor-grabbing select-none group"
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-light-blue/15 to-purple-600/25 blur-3xl scale-95 pointer-events-none -z-10" />
-        <EarthCanvas className="w-full h-full" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-light-blue/15 to-purple-600/25 blur-3xl scale-95 pointer-events-none -z-10 group-hover:scale-110 transition-transform duration-500" />
+        <EarthCanvas scrollVelocity={smoothVelocity} className="w-full h-full" />
       </motion.div>
     </div>
   );

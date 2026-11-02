@@ -1,12 +1,9 @@
 "use client";
 
-import { executeMcpTool } from "@/lib/mcp/executor";
-import { mcpTools } from "@/lib/mcp/tools-definitions";
+import { useAiChat } from "@/hooks/useAiChat";
 import { cn } from "@/lib/utils";
-import { ChatMessage } from "@/types/chat";
 import { AiChatTexts } from "@/types/texts";
 import { AnimatePresence, motion } from "framer-motion";
-import OpenAI from "openai";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { TbCpu, TbRefresh, TbRobot, TbSend, TbSparkles } from "react-icons/tb";
 
@@ -15,27 +12,9 @@ interface Props {
   className?: string;
 }
 
-const SYSTEM_PROMPT = `Você é o Agente Autônomo e Assistente Oficial do portfólio de Anderson Rodrigues, Engenheiro de Software Fullstack e Especialista em IA (MCP, RAG, Agentes Autônomos).
-Sua missão é responder a recrutadores, desenvolvedores e clientes sobre as competências, projetos, experiências profissionais e contatos do Anderson.
-
-Diretrizes obrigatórias:
-1. Sempre utilize as ferramentas (MCP Tools) disponíveis para consultar os dados reais e precisos do Anderson antes de responder. Nunca invente dados.
-2. Seja objetivo, técnico, cortês e profissional. Use markdown elegante (tópicos com marcadores, negrito e links).
-3. Adapte seu idioma ao do usuário (se perguntar em português, responda em português; se em inglês, responda em inglês).
-4. Destaque os diferenciais do Anderson: domínio em TypeScript, ecossistema Vue 3 (Composition API/Pinia), React/Next.js, APIs de alto desempenho (Express/Hono/Node.js), testes automatizados de alta cobertura (Vitest/Jest) e soluções autorais em IA com Model Context Protocol (MCP).`;
-
 export const AiChatbox = ({ texts, className }: Props) => {
-  const [messages, setMessages] = useState<ChatMessage[]>(() => [
-    {
-      id: "initial-welcome",
-      role: "assistant",
-      content: texts.welcomeMessage,
-      timestamp: Date.now(),
-      toolsUsed: ["get_profile_and_contact"],
-    },
-  ]);
+  const { messages, isLoading, sendMessage, clearChat } = useAiChat({ texts });
   const [inputValue, setInputValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -52,138 +31,26 @@ export const AiChatbox = ({ texts, className }: Props) => {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  const handleSendMessage = async (textToSend?: string) => {
-    const query = (textToSend || inputValue).trim();
-    if (!query || isLoading) return;
-
-    const userMessage: ChatMessage = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: query,
-      timestamp: Date.now(),
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
-    setInputValue("");
-    setIsLoading(true);
-
-    try {
-      const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
-      if (!apiKey) {
-        throw new Error("NEXT_PUBLIC_GROQ_API_KEY não configurada.");
-      }
-
-      const groq = new OpenAI({
-        apiKey,
-        baseURL: "https://api.groq.com/openai/v1",
-        dangerouslyAllowBrowser: true,
-      });
-      const apiMessages = [...messages, userMessage].map((m) => ({
-        role: m.role,
-        content: m.content,
-      }));
-      const formattedMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...apiMessages.map((message) => ({
-          role: message.role as "user" | "assistant" | "system",
-          content: message.content,
-        })),
-      ];
-      const initialResponse = await groq.chat.completions.create({
-        model: "llama-3.3-70b-versatile",
-        messages: formattedMessages,
-        tools: mcpTools as unknown as OpenAI.Chat.ChatCompletionTool[],
-        tool_choice: "auto",
-        temperature: 0.3,
-        max_tokens: 1024,
-      });
-
-      const responseMessage = initialResponse.choices[0]?.message;
-      const toolsUsed: string[] = [];
-
-      if (responseMessage?.tool_calls?.length) {
-        formattedMessages.push(responseMessage);
-
-        for (const toolCall of responseMessage.tool_calls) {
-          toolsUsed.push(toolCall.function.name);
-          let args: Record<string, unknown> = {};
-
-          try {
-            args = JSON.parse(toolCall.function.arguments || "{}");
-          } catch {
-            args = {};
-          }
-
-          const toolResult = await executeMcpTool(toolCall.function.name, args);
-          formattedMessages.push({
-            role: "tool",
-            tool_call_id: toolCall.id,
-            content: JSON.stringify(toolResult.result),
-          });
-        }
-      }
-
-      const finalResponse = responseMessage?.tool_calls?.length
-        ? await groq.chat.completions.create({
-            model: "llama-3.3-70b-versatile",
-            messages: formattedMessages,
-            temperature: 0.3,
-            max_tokens: 1024,
-          })
-        : undefined;
-
-      const assistantMessage: ChatMessage = {
-        id: `assistant-${Date.now()}`,
-        role: "assistant",
-        content:
-          finalResponse?.choices[0]?.message.content ||
-          responseMessage?.content ||
-          texts.errorGeneric,
-        timestamp: Date.now(),
-        toolsUsed,
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch {
-      const errorMessage: ChatMessage = {
-        id: `err-${Date.now()}`,
-        role: "assistant",
-        content: texts.errorGeneric,
-        timestamp: Date.now(),
-        isError: true,
-      };
-      setMessages((prev) => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    handleSendMessage();
+    if (!inputValue.trim() || isLoading) return;
+    const query = inputValue;
+    setInputValue("");
+    sendMessage(query);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSendMessage();
+      if (!inputValue.trim() || isLoading) return;
+      const query = inputValue;
+      setInputValue("");
+      sendMessage(query);
     }
   };
 
-  const handleClearChat = () => {
-    setMessages([
-      {
-        id: `welcome-${Date.now()}`,
-        role: "assistant",
-        content: texts.welcomeMessage,
-        timestamp: Date.now(),
-        toolsUsed: ["get_profile_and_contact"],
-      },
-    ]);
-  };
-
   const handleQuickQuestionClick = (question: string) => {
-    handleSendMessage(question);
+    sendMessage(question);
   };
 
   return (
@@ -220,7 +87,7 @@ export const AiChatbox = ({ texts, className }: Props) => {
 
         <button
           type="button"
-          onClick={handleClearChat}
+          onClick={clearChat}
           aria-label={texts.clearButton}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 text-white/70 hover:text-white text-xs transition-all duration-200"
         >
@@ -231,6 +98,7 @@ export const AiChatbox = ({ texts, className }: Props) => {
 
       <div
         ref={chatContainerRef}
+        aria-live="polite"
         className="flex-1 p-4 sm:p-6 space-y-4 overflow-y-auto max-h-[480px] min-h-[360px] scrollbar-thin scrollbar-thumb-white/10"
       >
         <AnimatePresence initial={false}>

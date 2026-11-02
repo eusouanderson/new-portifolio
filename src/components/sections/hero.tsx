@@ -17,7 +17,7 @@ export const Hero = ({ texts }: Props) => {
   return (
     <section
       id="about-me"
-      className="flex flex-col justify-center [&>*]:z-10"
+      className="flex flex-col justify-center min-h-dvh py-20 [&>*]:z-10"
     >
       <div className="flex gap-4 items-start mx-4 md:ml-[10%] md:mr-0 mt-6">
         <div className="flex flex-col justify-center items-center">

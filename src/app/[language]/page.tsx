@@ -1,7 +1,7 @@
 import { MainPage } from "@/components/main-page";
 
 export async function generateStaticParams() {
-  const supportedLanguages = ["en", "es", "pt-br"];
+  const supportedLanguages = ["en", "pt-br"];
 
   return supportedLanguages.map((language) => ({
     language,

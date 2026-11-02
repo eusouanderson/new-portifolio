@@ -1,3 +1,4 @@
+@import "lenis/dist/lenis.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,14 +8,14 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   @apply bg-light-blue;
-  /* Usando variável de cor do Tailwind */
 }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -22,18 +23,17 @@ body {
   width: 100%;
   background-color: #333;
   color: #fff;
-  z-index: 1000; /* Garante que a navbar esteja acima de outros elementos */
+  z-index: 1000;
 }
 
 section {
-  height: 100dvh;
-  scroll-snap-align: center;
-  overflow: hidden;
+  min-height: 100dvh;
+  position: relative;
+  scroll-margin-top: 5rem;
 }
 
 .shiny {
   @apply relative text-primary;
-  /* Usar utilitários do Tailwind */
 }
 
 .shiny::before {
@@ -70,7 +70,6 @@ section {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -90,5 +89,3 @@ section {
     transform: rotateY(360deg) rotateX(50deg);
   }
 }
-
-

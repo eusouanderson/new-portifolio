@@ -2,13 +2,14 @@
 
 import { Navbar } from "@/components/navbar";
 import {
-    AboutMe,
-    AiChat,
-    AiEcosystem,
-    Hero,
-    Projects,
-    Tecnologies,
+  AboutMe,
+  AiChat,
+  AiEcosystem,
+  Hero,
+  Projects,
+  Tecnologies,
 } from "@/components/sections";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { LanguageProvider, useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
 import { Texts } from "@/types/texts";
@@ -77,7 +78,9 @@ const MainPageInner = () => {
 export const MainPage = ({ initialLanguage = "pt-br" }: Props) => {
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
-      <MainPageInner />
+      <SmoothScrollProvider>
+        <MainPageInner />
+      </SmoothScrollProvider>
     </LanguageProvider>
   );
 };
