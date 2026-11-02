@@ -1,6 +1,5 @@
 "use client";
 
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { publicAssetPath } from "@/lib/utils";
 import { Float, OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -37,7 +36,7 @@ const DigitalOrbitalElements = ({ scrollVelocity }: CyberEarthProps) => {
 
   useFrame((_, delta) => {
     const vel = scrollVelocity ? Math.abs(scrollVelocity.get()) : 0;
-    const boost = 1 + vel * 3;
+    const boost = 1 + Math.min(vel * 3, 3);
 
     if (ring1Ref.current) {
       ring1Ref.current.rotation.z += delta * 0.35 * boost;
@@ -98,7 +97,6 @@ const CyberEarth = ({ scrollVelocity }: CyberEarthProps) => {
   const icosahedronRef = useRef<THREE.Mesh>(null);
   const earthGroupRef = useRef<THREE.Group>(null);
   const tiltGroupRef = useRef<THREE.Group>(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     earth.scene.traverse((child) => {
@@ -127,22 +125,20 @@ const CyberEarth = ({ scrollVelocity }: CyberEarthProps) => {
   }, [earth]);
 
   useFrame((state, delta) => {
-    if (prefersReducedMotion) return;
-
     const vel = scrollVelocity ? Math.abs(scrollVelocity.get()) : 0;
-    const boost = 1 + vel * 3.5;
+    const boost = 1 + Math.min(vel * 3.5, 3.5);
 
     if (earthGroupRef.current) {
-      earthGroupRef.current.rotation.y += delta * 0.35 * boost;
+      earthGroupRef.current.rotation.y += delta * 0.4 * boost;
     }
 
     if (wireframeRef.current) {
-      wireframeRef.current.rotation.y += delta * 0.15 * boost;
+      wireframeRef.current.rotation.y += delta * 0.18 * boost;
     }
 
     if (icosahedronRef.current) {
-      icosahedronRef.current.rotation.y -= delta * 0.1 * boost;
-      icosahedronRef.current.rotation.x += delta * 0.05 * boost;
+      icosahedronRef.current.rotation.y -= delta * 0.12 * boost;
+      icosahedronRef.current.rotation.x += delta * 0.06 * boost;
     }
 
     if (tiltGroupRef.current) {
@@ -162,7 +158,7 @@ const CyberEarth = ({ scrollVelocity }: CyberEarthProps) => {
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
+    <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
       <group ref={tiltGroupRef} scale={3.3}>
         <group ref={earthGroupRef}>
           <primitive object={earth.scene} position-y={0} rotation-y={0} />
@@ -195,12 +191,10 @@ const CyberEarth = ({ scrollVelocity }: CyberEarthProps) => {
 };
 
 export const EarthCanvas = ({ className, scrollVelocity }: EarthCanvasProps) => {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
     <Canvas
       shadows
-      frameloop={prefersReducedMotion ? "demand" : "always"}
+      frameloop="always"
       dpr={[1, 1.5]}
       gl={{ preserveDrawingBuffer: true, antialias: true }}
       className={className}
@@ -217,9 +211,9 @@ export const EarthCanvas = ({ className, scrollVelocity }: EarthCanvasProps) => 
       <pointLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
       <Suspense fallback={null}>
         <OrbitControls
-          autoRotate={!prefersReducedMotion}
+          autoRotate={true}
           autoRotateSpeed={1.5}
-          enableRotate={!prefersReducedMotion}
+          enableRotate={true}
           rotateSpeed={0.85}
           enableDamping={true}
           dampingFactor={0.05}

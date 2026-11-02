@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { NavbarTexts } from "@/types/texts";
 import { AnimatePresence, motion } from "framer-motion";
 import Hamburger from "hamburger-react";
-import { useLenis } from "lenis/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "./logo";
@@ -18,7 +17,6 @@ export const Navbar = ({ text }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
-  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,15 +85,7 @@ export const Navbar = ({ text }: Props) => {
     const targetElement = document.getElementById(targetId);
     if (!targetElement) return;
 
-    if (lenis) {
-      lenis.scrollTo(targetElement, {
-        offset: -80,
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-    } else {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
+    targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
 
     if (typeof window !== "undefined" && window.history.pushState) {
       window.history.pushState(null, "", `#${targetId}`);
