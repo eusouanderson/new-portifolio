@@ -22,9 +22,9 @@ export const Tecnologies = ({ techTexts }: Props) => {
             {techTexts.description.split("\n").map((text, index) => {
               const converted = text
                 .split(" ")
-                .map((word, index) => {
+                .map((word, wordIndex) => {
                   if (techTexts.highlights.includes(word)) {
-                    return `<strong key={index} class="text-light-blue">
+                    return `<strong key="${wordIndex}" class="text-light-blue">
                         ${word}
                       </strong>`;
                   }
@@ -37,7 +37,7 @@ export const Tecnologies = ({ techTexts }: Props) => {
                   dangerouslySetInnerHTML={{
                     __html: converted,
                   }}
-                ></span>
+                />
               );
             })}
           </div>

@@ -23,9 +23,7 @@ import {
 } from "react-icons/tb";
 import { Tilt } from "react-tilt";
 import type { Swiper as SwiperType } from "swiper";
-// @ts-ignore
 import "swiper/css";
-// @ts-ignore
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
